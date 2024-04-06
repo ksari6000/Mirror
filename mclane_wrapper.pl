@@ -86,12 +86,6 @@ $log->info("Process started:\n");
 $log->info("$date_time");
 my $go_mail = MCCS::WMS::Sendmail->new();
 
-#Add / change Lines 177, 201, 244 ,480 etc.
-sub rm_double_slashes() {
-    my $string = shift;
-    $string =~ s/\/{2}/\//g;
-    return $string;
-}
 sub log_debug {
 	my $log_entry = join( '', "(PID $$) ", @_ );
 	$log->info($log_entry);
@@ -123,7 +117,7 @@ if ($c_ymd == $s_of_the_week){
 }
 
 ## only purge the table when it is the end of the week
-$END_OF_THE_WEEK = 1;
+###$END_OF_THE_WEEK = 1;
 if ($END_OF_THE_WEEK){
 ### purge old summary data:
     my $purge1 ='delete from mclane_rejected_upc_daily';
@@ -138,8 +132,6 @@ if ($END_OF_THE_WEEK){
 	$dbh->commit;
 	$log->info("purge tables mclane_rejected_upc_daily and mclane_success_upc_daily successsful");
     }
-
-
 }
 
 ###
@@ -148,7 +140,7 @@ eval{
     &sftpFromMclane($log);
 };
 
-#if (1){
+
 if ($@){
     $log->info ("sftpFromMclane error:"."$@");
     my $go_mail = MCCS::WMS::Sendmail->new();
@@ -161,11 +153,7 @@ if ($@){
     $log->info ("sftpFromMclane sccessful");
 
 }
-    my $calling_cmd ="perl /usr/local/mccs/bin/mclane/mclane_cost_load.pl --debug $debug";  ##ChangeKS
-    eval{
-	system($calling_cmd);
-    };
-exit;
+
 ### open dir, print filename: copy file from prestaging to staging. one at a time.
 ### processing file  one at a time by calling the subprogram, workingxxx
 
@@ -178,11 +166,9 @@ foreach my $file (@dir) {
     }
     log_debug("processing file:".$file."\n"); 
     my $cmd = "mv ".$g_pstaging_dir."/".$file."  ".$g_staging_dir."/".$file;
-    $cmd = &rm_double_slashes($cmd);  
     system($cmd);
     ####my $calling_cmd ="perl /usr/local/mccs/scratch/yuc_temp/mclane_cost/working_mclane_cost_load.pl";
-    #my $calling_cmd ="perl /usr/local/mccs/bin/mclane_cost_load.pl --debug 1";
-    my $calling_cmd ="perl /usr/local/mccs/bin/mclane/mclane_cost_load.pl --debug $debug";  ##ChangeKS
+    my $calling_cmd ="perl ./mclane_cost_load.pl --debug $debug";
     eval{
 	system($calling_cmd);
     };
@@ -205,12 +191,10 @@ if ($END_OF_THE_WEEK){
     if ( -e $g_rpt_stg_dir){
 ### 
 	$single_file = $g_rpt_stg_dir."/".$g_reject_file_pattern."_".$day_d.".rpt";
-    $single_file = &rm_double_slashes($single_file);
 	$reformated_file1 = $g_rpt_stg_dir."/"."Reformated_reject_report"."_".$day_d.".rpt";
-    $reformated_file1 = &rm_double_slashes($reformated_file1);    
+        
 	my $cmd_line ="/bin/cat $g_rpt_stg_dir"."/report_mclane_cost_*  ".">> $single_file";
-    $cmd_line = &rm_double_slashes($cmd_line);  	
-    system($cmd_line);
+	system($cmd_line);
 	
 ### load into a table for the sake of sorting...
 	if (-s $single_file){
@@ -248,12 +232,9 @@ if ($END_OF_THE_WEEK){
     my $single_file2;
     if ( -e $g_rpt_stg_dir){
 	$single_file2 = $g_rpt_stg_dir."/".$g_success_file_pattern."_".$day_d.".rpt";
-    $single_file2 = &rm_double_slashes($single_file2);   
 	$reformated_file2 = $g_rpt_stg_dir."/"."Reformated_success_report_mclane_".$day_d.".rpt";
-    $reformated_file2 = &rm_double_slashes($reformated_file2); 	
-    my $cmd_line2 ="/bin/cat $g_rpt_stg_dir"."/success_report_mclane_cost_*  ".">> $single_file2";
-    $cmd_line2 = &rm_double_slashes($cmd_line2);  	
-    system($cmd_line2);
+	my $cmd_line2 ="/bin/cat $g_rpt_stg_dir"."/success_report_mclane_cost_*  ".">> $single_file2";
+	system($cmd_line2);
 	
 	if ( -s $single_file2){
 	    &load_success_UPC_files($g_rpt_stg_dir);
@@ -485,9 +466,7 @@ sub sftpFromMclane {
 	    my $filename = $ary_ele->{'filename'};
 	    if ($filename =~ /^MCX/g){
 			my $from_file = $g_from_dir.'/'.$filename;
-            $from_file = &rm_double_slashes($from_file);             
 			my $dest_file = $g_pstaging_dir.  '/'.$filename;
-            $dest_file = &rm_double_slashes($dest_file);             
 			my $result = $sftp->get($from_file, $dest_file);
                 	log_debug("from $from_file to $dest_file");
 	    }
