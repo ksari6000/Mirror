@@ -79,7 +79,7 @@ my $options = (GetOptions(  #ChangekS / Add
 	'debug'      => \$debug,
 	)
 );
-
+my $log = IBIS::Log::File->new( {file => $g_log_file} );
 sub log_debug {
 	my $log_entry = join( '', "(PID $$) ", @_ ); #changeKS / Add
 	$log->info ($log_entry);
@@ -93,7 +93,7 @@ sub debug {                                      #changeKS / Add
 }
 
 ## initiate a log
-my $log = IBIS::Log::File->new( {file => $g_log_file} );
+
 &log_debug ("Process started:\n");              #ChangeKS ALL $log->info to &Log_debug
 &log_debug ("$date_time");
 my $go_mail = MCCS::WMS::Sendmail->new();
