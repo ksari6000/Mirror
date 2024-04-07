@@ -73,8 +73,8 @@ $g_rpt_dir         = $g_cfg->MCLANE_COST->{rpt_dir};
 #$g_rpt_stg_dir     ='/usr/local/mccs/data/mclane_cost/rpt_stage/'; #Changed
 $g_rpt_stg_dir     =$g_cfg->MCLANE_COST->{rpt_stage};               #change
 $g_archive_dir     = $g_cfg->MCLANE_COST->{archive_dir};
-$g_report_email    = $g_cfg->MCLANE_COST->{tech_emails};
-
+#$g_report_email    = $g_cfg->MCLANE_COST->{tech_emails};
+$g_report_email->{kav}  = 'kaveh.sari@usmc-mccs.org';
 my $options = (GetOptions(  #ChangekS / Add
 	'debug'      => \$debug,
 	)
@@ -1822,7 +1822,7 @@ sub archive_loaded_files{
     }else{
 	my $msg = "system command call failed. ".$cmd;
 	&log_debug ($msg);
-	&send_mail_with_attachment ('Failed to move away loaded mclane cost file', 'Failure in running'.$cmd, '');
+	&send_mail_with_attachment ('Failed to move away loaded mclane cost file', 'Failure in running '.$cmd, '');
     }
 }
 
