@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Comments 
 export ORACLE_HOME="/usr/lib/oracle/11.1/client64"
 export LD_LIBRARY_PATH="/usr/lib/oracle/11.1/client64/lib"
 
