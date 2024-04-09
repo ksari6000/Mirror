@@ -1,0 +1,497 @@
+#!/usr/local/mccs/perl/bin/perl
+#--------------------------------------------------------------------------
+#Ported by : Hung Nguyen
+#Date      : 12/07/2023
+#
+#Brief Desc: Get new .cvs files from SPS-Commerce remote directory to local 
+#            directory. Insert the file information into database  
+#            table EDI_850_ack 
+#            fields po_id, filename, ack_source, sps_process_date, 
+#            ack_type, business_date, create_date
+#			 Compile the report and email it to specified users.
+#
+#Note:       Program does not delete any files in the remote dir
+#            Program has local list that compares the remote list
+#            to determine the new files.
+# --------------------------------------------------------------------------   
+
+use strict;
+use File::Basename;
+use File::Path;
+use IBIS::Log::File;
+use MCCS::Config;
+use File::Copy;
+use Fcntl qw(:flock);
+use Net::SFTP::Foreign;
+use IBIS::DBI;
+use IBIS::Crypt;
+
+#- One process at a time ---------------------------------------------
+my $lock_file= "/usr/local/mccs/tmp/". basename($0) . ".lck";
+open SELF, "> $lock_file" or die "Could not create lock file $lock_file";
+flock SELF, LOCK_EX | LOCK_NB  or die "Another $0 process already running";
+
+#- Global variables --------------------------------------------------
+use constant LOGFILE  => '/usr/local/mccs/log/SPS/' . basename(__FILE__) . '.log';
+my $g_log = IBIS::Log::File->new( { file => LOGFILE, append => 1, level => 4 } ) ;
+
+my $g_cfg           = new MCCS::Config;
+my $g_long_date     = `date`;
+my $g_host          = `hostname`;
+my @g_error_msg     = ();
+my $g_local_d       = $g_cfg->spscommerce->{LOCAL_DIR};
+my $g_remote_d      = $g_cfg->spscommerce->{REMOTE_DIR};
+my $g_emails        = $g_cfg->spscommerce->{EMAILS};
+my $g_database      = $g_cfg->spscommerce->{DBNAME};
+my $g_sftp_h        = $g_cfg->sps_SFTP->{sftp_host};
+my $g_sftp_u        = $g_cfg->sps_SFTP->{sftp_user};
+my $g_sftp_port     = $g_cfg->sps_SFTP->{sftp_port};
+my $o               = IBIS::Crypt->new();
+my $g_sftp_p        = $o->decrypt( $g_cfg->sps_SFTP->{sftp_pass} );
+
+chomp($g_long_date);
+chomp($g_host);
+
+#---------------------------------------------------------------------
+# SUBS
+#---------------------------------------------------------------------
+sub send_mail {
+    my $msg_sub  = shift;
+    my $msg_bod1 = shift;
+    my $msg_bod2 = shift || '';
+
+    foreach my $name ( sort keys %{$g_emails} ) {
+        $g_log->debug( "Sent email to $name (" . $g_emails->{$name} . ")" );
+        $g_log->debug("  Sbj: $msg_sub ");
+        $g_log->debug("  $msg_bod1 ");
+        $g_log->debug("  $msg_bod2 ");
+        open( MAIL, "|/usr/sbin/sendmail -t" );
+        print MAIL "To: " . $g_emails->{$name} . " \n";
+        print MAIL "From: rdistaff\@usmc-mccs.org\n";
+        print MAIL "Subject: $msg_sub\n";
+        print MAIL "\n";
+        print MAIL $msg_bod1;
+        print MAIL $msg_bod2;
+        print MAIL "\n";
+        print MAIL "\n";
+        close(MAIL);
+        $g_log->info("Sent email to $name");
+    }
+}
+
+#---------------------------------------------------------------------
+sub fatal_error {
+    my $msg = shift;
+    send_mail( "ERROR on " . __FILE__ . ' ' . $g_long_date, $msg );
+    $g_log->error($msg);
+    print $msg;
+    exit 1;    # exit for error
+}
+
+#---------------------------------------------------------------------
+# Reading listing of files from passed directory argument
+#---------------------------------------------------------------------
+sub get_file_list {
+    my $d = shift;
+    my $dirfh;
+    my @files = ();
+    opendir( $dirfh, $d );
+    @files = readdir($dirfh);
+    #HJ @files = grep /\.csv/i, @files;
+    unless (@files) {
+        my $msg = "no files in $d";
+        $g_log->info($msg);
+        send_mail( "SPS SFTP FYI $msg" , "program: " . __FILE__  );
+    }
+    closedir($dirfh);
+    return \@files;
+}
+
+#---------------------------------------------------------------------
+# Get listing of files from remote_directory
+#---------------------------------------------------------------------
+sub get_remote_file_list {
+    my $d = shift;
+    #my @files = IBIS::SFTP::Foreign->new( { destination => 'spscommerce', 
+    #remote_dir =>$d } )->ls();
+
+    my $sftp = Net::SFTP::Foreign->new(
+        $g_sftp_h,
+        user     => $g_sftp_u,
+        password => $g_sftp_p,
+        port     => $g_sftp_port
+    );
+    $sftp->die_on_error("Unable to establish SFTP connection ");
+
+    my $list_ref = $sftp->ls($d);
+
+#ERS 7/22/2009 only get .csv files
+    my @files = grep { /\.csv/i }  map { $_->{filename} }  @{ $list_ref };
+
+#use Data::Dumper;
+#print Dumper @files;
+#exit;
+    return \@files;
+}
+
+#---------------------------------------------------------------------
+# Compares 2 list of files and determine which one is the new files
+#---------------------------------------------------------------------
+sub get_new_file_list {
+    my $l_f = shift; #Local
+    my $r_f = shift; #Remote
+
+
+    my @new_f = ();
+    my @tmp = @{$l_f};
+    my %seen = ();  # Look up table
+    @seen{@tmp} = ();  # Look up table
+
+    foreach my $f (@{$r_f}) {
+        push(@new_f, $f) unless exists $seen{$f};
+    }
+    
+    return \@new_f
+}
+
+#---------------------------------------------------------------------
+# Create new directory
+#---------------------------------------------------------------------
+sub create_dir {  
+    my $d = shift;
+    unless ( -d $d ) {
+        eval { mkpath($d); };
+        if ($@) {
+            fatal_error("Could not create directory $d, $@\n");
+        }
+    }
+}
+#---------------------------------------------------------------------
+# Read the content of file in the argument
+#---------------------------------------------------------------------
+sub get_content {
+    my $f = shift;
+    open(local *IN, '<', $f) or fatal_error("Could not read $f, $!");
+    my @data =  <IN> ;
+    close IN;
+    return \@data;
+}
+#---------------------------------------------------------------------
+sub format_content {
+    my $data = shift;
+    my $s;
+    my ($po, $src, $date);
+    $s="P.O. Number\tSource\tTimeStamp\n";
+    foreach my $line ( @{$data}) {
+       if ( $line =~ m/(?:\d{3})(\d+)\s+(A|E|W)(\d+)/) {
+         $po=$1;
+         $src=$2;
+         $date=$3;
+         $date =~ s/(\d{2})(\d{2})(\d{2})$/ $1\:$2\:$3/;
+         $s .= $po ."\t\t  " .$src . "\t\t" . $date . "\n" ;
+       }
+    }
+    return \$s;
+}
+#---------------------------------------------------------------------
+# Sending the report via email
+#---------------------------------------------------------------------
+sub email_report {
+    my $files = shift;
+    my $msg;
+    foreach my $f ( @{$files} ) {
+        my $full_path = $g_local_d . '/' . $f;
+        if ( -e $full_path) {
+            $msg .= "Filename: $f\n";
+            if ( $f =~ m/^FA/) {
+                $msg .= "-- Functional Acknowledgement --\n";
+            } elsif ( $f =~ m/^DL/) {
+                $msg .= "-- Delivery --\n";
+            } else {
+                # DO nothing
+            }
+            $msg .= ${format_content(get_content($full_path))};
+            $msg .= "\n\n";
+        } else {
+            fatal_error("File $full_path missing");
+        }
+    }
+    unless ( $msg) {
+        $msg = "No new files on SPS Commerce FTP site";
+    }
+    $msg .= ${get_missing_ack_report()};
+    $msg .= "\n\n";
+    # -------------------------------------
+    # This bit is executed by another script,
+    # /usr/local/mccs/bin/sps_sps_non_received_rep
+    #
+    # $msg .= ${get_non_received_report()};
+    # -------------------------------------
+    send_mail( "SPS Purchase Order Report ". $g_long_date, $msg );
+}
+#---------------------------------------------------------------------
+# Query Database to determine non received records
+#---------------------------------------------------------------------
+sub get_non_received_report {
+    my $dbh = IBIS::DBI->connect(dbname => 'rms_p_force');
+    my $sql = qq{
+SELECT DISTINCT c.key_data, 
+       substr(c.transaction_data, 19,2) dd, 
+       c.date_processed
+FROM  merch.edi_pending_transactions c
+WHERE
+NOT EXISTS (
+        SELECT 1 
+        FROM rdiusr.edi_850_ack p 
+        WHERE p.po_id = c.key_data
+  )
+AND substr(c.transaction_data, 19,2) >= '00'
+AND c.transaction_sequence_id = '1'
+AND c.date_processed >= trunc(sysdate)-3
+AND c.partnership_id != '00001707694850'
+AND c.ride_session_id != '999'
+ORDER BY c.date_processed
+    };
+    my $sth = $dbh->prepare($sql)
+      or fatal_error("$sql Could not prepare $sql stmt");
+    eval{ 
+        $sth->execute() 
+    };
+    my $tmp;
+    my $data = '';
+    my $z;
+    my $n  = 0;
+    while ( my $rec = $sth->fetchrow_hashref ) {
+       $tmp = $rec->{'dd'};
+    #   $tmp =~ s/ +/ /g;
+       $z = $rec->{'key_data'}
+       . "  "
+       . $rec->{'date_processed'} 
+       . "  "
+       . $tmp
+       . "\n";
+       $data .= $z;
+       $n++;
+    }
+    $data .= "$n records returned.\n";
+    $data = "============================\n" . $data;
+    $data = "Non-received PO Transmission\n" . $data;
+    if ($@) {
+       $g_log->info("SQL error on $sql");       
+       $g_log->info("\n$@");       
+    }
+    return \$data;
+}
+#---------------------------------------------------------------------
+# Query database to get missing ack records
+#---------------------------------------------------------------------
+sub get_missing_ack_report {
+    my $dbh = IBIS::DBI->connect(dbname => 'rms_p_force');
+    my $sql = qq{
+SELECT distinct c.key_data, 
+       c.date_processed, 
+       substr(c.transaction_data, 19,2) dd
+FROM   merch.edi_pending_transactions c
+WHERE
+NOT EXISTS (
+            SELECT 1 
+            FROM rdiusr.edi_850_ack p 
+            WHERE p.po_id = c.key_data 
+            AND p.ack_source = 'A' 
+            AND p.ack_type = 'FA'
+  )
+AND substr(c.transaction_data, 19,2) >= '00'
+AND c.transaction_sequence_id = '1'
+AND c.date_processed >= trunc(sysdate)-10
+AND c.partnership_id != '00001707694850'
+AND c.ride_session_id != '999'
+ORDER BY c.date_processed
+    };
+    my $sth = $dbh->prepare($sql)
+      or fatal_error("$sql Could not prepare $sql stmt");
+    eval{ 
+        $sth->execute() 
+    };
+    use Data::Dumper;
+    my $tmp;
+    my $data = '';
+    my $z;
+    my $n  = 0;
+    while ( my $rec = $sth->fetchrow_hashref ) {
+       $tmp = $rec->{'dd'};
+    #   $tmp =~ s/ +/ /g;
+       $z = $rec->{'key_data'}
+       . "  "
+       . $rec->{'date_processed'} 
+       . "  "
+       . $tmp
+       . "\n";
+       $data .= $z;
+       $n++;
+    }
+    $data .= "$n records returned.";
+    $data = "===================================\n" . $data;
+    $data = "Missing Functional Acknowledgements\n" . $data;
+    if ($@) {
+       $g_log->info("SQL error on $sql");       
+       $g_log->info("\n$@");       
+    }
+    return \$data;
+
+}
+#---------------------------------------------------------------------
+# Insert database the data gathered from the new downloaded files
+#---------------------------------------------------------------------
+sub insert_db {
+    my $files = shift;
+    my $f;
+    my $full_path;
+    my $ack_type;
+    my $business_date;
+    my ($po, $src, $date);
+    my $dbh = IBIS::DBI->connect(dbname => $g_database, 
+    # date_format => 'YYYYMMDD' 
+    );
+
+    foreach my $f ( @{$files} ) {
+        $full_path = $g_local_d . '/' . $f;
+        $ack_type = '';
+        $business_date = '';
+        # Get Ack Type
+        if ( $f =~ /^([[:alpha:]]{2})(\d{8})/) {
+           $ack_type = $1;
+           $business_date = $2;
+        } else {
+           fatal_error("Could not find \"ACK type\" or \"business date\" on $f");
+        }
+        # Get Business Date
+        if ( -e $full_path) {
+            my $file_data = get_content($full_path);
+            foreach my $line (@{$file_data}) {
+               if ( $line =~ m/(?:\d{3})(\d+)\s+(A|E|W)(\d+)/) {
+                 $po=$1;
+                 $src=$2;
+                 $date=$3;
+                 #$date =~ s/\d{6}$//;
+                 #print "$po - $f - $date - $src - $ack_type - autodate - $business_date\n";
+                 insert_to_table_EDI_850_ack($dbh, $po, $f, $date, $src, $ack_type, $business_date);
+               } 
+            }
+        } else {
+            fatal_error("File $full_path missing");
+        }
+    }
+    $dbh->disconnect();
+}
+#---------------------------------------------------------------------
+# The Insert statement
+#---------------------------------------------------------------------
+sub insert_to_table_EDI_850_ack {
+    my $dbh = shift;
+    my $po = shift;
+    my $filename = shift;
+    my $date = shift;
+    my $src = shift;
+    my $ack_type = shift;
+    my $business_date = shift;
+
+    my $sql = "INSERT INTO EDI_850_ack(po_id, filename, ack_source, sps_process_date, ack_type, business_date, create_date) VALUES($po, \'$filename\', \'$src\', to_date(\'$date\',\'YYYYMMDDHH24MISS\'), \'$ack_type\', to_date(\'$business_date\',\'YYYYMMDD\'), SYSDATE)";
+
+    my $sth = $dbh->prepare($sql)
+      or fatal_error("$sql Could not prepare $sql stmt");
+    eval{ 
+        $sth->execute() 
+    };
+
+    if ($@) {
+       $g_log->info("SQL error on $po $filename $src $date $ack_type");       
+       $g_log->info("\n$@");       
+    }
+
+}
+#---------------------------------------------------------------------
+# Pseudo Main which is called from MAIN
+#---------------------------------------------------------------------
+sub my_main {
+    $g_log->info("-- Start ----------------------------------------");
+    create_dir($g_local_d);
+    chdir($g_local_d) or fatal_error("Could not cd to $g_local_d, $!");
+
+    my $local_file_list = get_file_list($g_local_d);
+    my $file_count = $#{$local_file_list};
+    $g_log->info("Local dir = $g_local_d");
+    $g_log->info("There are " . $file_count  . " local files");
+    my $remote_file_list = get_remote_file_list($g_remote_d);
+    my $new_file_list = get_new_file_list($local_file_list, $remote_file_list);
+
+    if (@{$new_file_list}) {
+       $g_log->info("New Files detected:");
+       for (@{$new_file_list}) { $g_log->info("   $_") }
+    }
+
+    my $downloaded_file_list = 0;
+    my $new_file_count = $#{$new_file_list} + 1;
+    if ( @{$new_file_list} ) {
+       $g_log->info("Downloading Files");
+
+       my $sftp = Net::SFTP::Foreign->new(
+        $g_sftp_h,
+        user     => $g_sftp_u,
+        password => $g_sftp_p,
+        port     => '10022'
+       );
+       $sftp->die_on_error("Unable to establish SFTP connection ");
+
+       # $downloaded_file_list = IBIS::FTP->new( { 
+       #                   destination => 'spscommerce', 
+       #                   remote_dir => $g_remote_d,
+       #                   files => $new_file_list } )->get();
+
+       my $d1 = $g_remote_d;    # remote out directory
+       my $d2 = $g_local_d;
+       mkpath($d2);
+       foreach my $f (@{$new_file_list}) {
+            $sftp->get( "$d1/$f", "$d2/$f" )
+              or fatal_error("Could not sftp get $d1/$f from $g_sftp_h because " . $sftp->error());
+            $g_log->info("  $f OK");
+            $downloaded_file_list++;
+       }
+       
+
+       if ( $downloaded_file_list == $new_file_count ) {
+          $g_log->info("Download Completed");
+       } else {
+          fatal_error("FTP get incomplete $downloaded_file_list of $$new_file_count downloaded");
+       }
+       insert_db($new_file_list);
+
+       # Send email notifications.
+       email_report($new_file_list);
+
+    } else {
+       $g_log->info("No new Files detected");
+       send_mail( "SPS Report ". $g_long_date, "No new files on SPS Commerce FTP site" );
+    }
+
+
+    $g_log->info("-- End ------------------------------------------");
+}
+
+#---------------------------------------------------------------------
+# MAIN PROGRAM
+#---------------------------------------------------------------------
+
+# Want to catch warning
+$SIG{__WARN__} = sub { $g_log->warn("@_") };
+
+# Execute the main
+eval { my_main() };
+if ($@) {
+    send_mail( "SPS_FTP:ERROR on " . __FILE__ . $g_long_date,
+                             "Untrapped Error:\n\n", " $@" );
+}
+
+#---------------------------------------------------------------------
+# End program
+#---------------------------------------------------------------------
+
