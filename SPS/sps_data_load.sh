@@ -14,11 +14,11 @@ echo "Lets start creating SPS files  $(date +%k:%M:%S)"
 
 sqlplus -s rdiusr/stop50@draix01.usmc-mccs.org/mc2p @/usr/local/mccs/bin/sps_get_weeks.sql > $weekly_file
 
-nohup perl /usr/local/mccs/bin/sps_data_load.pl --type LOCATION --database rms_r --archive --nosend &
+nohup perl /usr/local/mccs/bin/sps_data_load.pl --type LOCATION --database rms_r --archive --nosend --debug 1 &
 var[$idx]=`echo $!`
 idx=`expr $idx + 1`
 
-nohup perl /usr/local/mccs/bin/sps_data_load.pl --type PRODUCT --database rms_r  --archive --nosend &
+nohup perl /usr/local/mccs/bin/sps_data_load.pl --type PRODUCT --database rms_r  --archive --nosend --debug 1 &
 var[$idx]=`echo $!`
 idx=`expr $idx + 1`
 
@@ -30,7 +30,7 @@ while read line; do
     if [[ $rec = "rec" ]] 
     then
       echo "Just kicking off another SPS Activity process $vdate"
-      nohup perl /usr/local/mccs/bin/sps_data_load.pl --type ACTIVITY --database rms_p_force --week_ending "$vdate" --archive &
+      nohup perl /usr/local/mccs/bin/sps_data_load.pl --type ACTIVITY --database rms_p_force --week_ending "$vdate" --archive --nosend --debug 1 &
       var[$idx]=`echo $!`
       idx=`expr $idx + 1`
     else
