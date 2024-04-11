@@ -1,8 +1,9 @@
 #!/bin/bash
 #Comments 
-export ORACLE_HOME="/usr/lib/oracle/11.1/client64"
-export LD_LIBRARY_PATH="/usr/lib/oracle/11.1/client64/lib"
-
+#export ORACLE_HOME="/usr/lib/oracle/11.1/client64"
+#export LD_LIBRARY_PATH="/usr/lib/oracle/11.1/client64/lib"
+export ORACLE_HOME="/usr/local/mccs/instantclient_12_1"
+export LD_LIBRARY_PATH="/usr/local/mccs/instantclient_12_1"
 declare -a var  #create an array
 idx=0
 weekly_file="/usr/local/mccs/data/sps/work/weeks.dat"
