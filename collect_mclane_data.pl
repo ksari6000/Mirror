@@ -73,7 +73,8 @@ my $g_log =
   IBIS::Log::File->new( { file => $g_logfile, append => 1, level => 4 } );
 
 #handle command line arguments  (ANY NEW OPTION NEEDED?)
-##my $options = ( GetOptions( 'stage=s' => \$stage, 'retry=s' => \$retry ) );
+my $suppress_send = 0;
+my $options = ( GetOptions('nosend' =>  \$suppress_send));
 
 # Connect to DB
 my $g_dbh = IBIS::DBI->connect( dbname => 'rms_r' );
@@ -85,8 +86,12 @@ create_MCL_Rpt_Table();
 createFlatFile();
 
 # Send daily file to MClane
-sftpTOMCL();
-
+if ( !$suppress_send ) {
+	sftpTOMCL();
+}
+else{
+	$g_log->info("Skipping file send per command line switch --nosend");
+}
 # Run stored procedure to create MClane report work file
 sub create_MCL_Rpt_Table {
 	my $sth;
