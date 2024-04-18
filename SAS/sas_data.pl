@@ -67,5 +67,4 @@ my @valid_types =
 	grep{ /(\.pm)$/ && $_ ne 'Base.pm' }
 	readdir($dirfh);
 closedir($dirfh);
-
-print @types;
+print @valid_types;
