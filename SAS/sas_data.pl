@@ -68,4 +68,4 @@ my @valid_types =
 	readdir($dirfh);
 closedir($dirfh);
 print $plugin_dir . "\n";
-print join(", ",@valid_types) ;
+print join(", ",@valid_types) ;  
