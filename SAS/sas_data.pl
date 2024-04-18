@@ -67,4 +67,5 @@ my @valid_types =
 	grep{ /(\.pm)$/ && $_ ne 'Base.pm' }
 	readdir($dirfh);
 closedir($dirfh);
-print @valid_types;
+print $plugin_dir . "\n";
+print join(", ",@valid_types) ;
