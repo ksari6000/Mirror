@@ -2,13 +2,12 @@
 
 #Things to do create aliases so I can mail crap out to people
 
-export ORACLE_HOME="/usr/lib/oracle/11.1/client"
-export LD_LIBRARY_PATH="/usr/lib/oracle/11.1/client/lib"
-
+export ORACLE_HOME="/usr/local/mccs/instantclient_12_1"
+export LD_LIBRARY_PATH="/usr/local/mccs/instantclient_12_1"
 
 declare -a var  #create an array
 idx=0
-run_dir="/usr/local/mccs/bin"
+run_dir="/usr/local/mccs/bin/SAS"
 io_dir="/usr/local/mccs/data/sas/04_Runtime"
 weekly_file="/usr/local/mccs/data/sas/04_Runtime/merch_weeks"
 sas_file="/usr/local/mccs/data/sas/04_Runtime/sas_weekly_sw.txt"
@@ -30,8 +29,10 @@ case $1 in
 esac
 
 echo "Running SqlPlus to start SAS Data Batch Process"
-/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$io_dir/sas_weekly_get_$1_weeks.sql > $io_dir/merch_weeks 
-/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$run_dir/sas_weekly_$1_start.sql
+#/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$io_dir/sas_weekly_get_$1_weeks.sql > $io_dir/merch_weeks
+sqlplus -s eric/ericdata@draix22.usmc-mccs.org/sastst @$io_dir/sas_weekly_get_$1_weeks.sql > $io_dir/merch_weeks 2>/tmp/error1
+#/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$run_dir/sas_weekly_$1_start.sql
+sqlplus -s eric/ericdata@draix22.usmc-mccs.org/sastst @$run_dir/sas_weekly_$1_start.sql 2>/tmp/erro2
 echo ""
 echo ""
 
@@ -43,7 +44,7 @@ echo ""
 echo "Creating Merch/Product"
 echo ""
 for a in DIVISION LOB DEPARTMENT CLASS SUBCLASS STYLE_DAILY PRODUCT_DAILY; do
-  nohup  perl  /usr/local/mccs/bin/sas_data.pl --type $a --database rms_p_force  &
+  nohup  perl  /usr/local/mccs/bin/SAS/sas_data.pl --type $a --database rms_p_force  &
   var[$idx]=`echo $!`
    #echo "exe PID ".${var[$idx]}     
   idx=`expr $idx + 1`
@@ -59,7 +60,7 @@ while read line; do
     if [[ $rec =~ "^rec" ]] 
     then
       echo "Just kicking off another SALES process $year $week"
-      nohup /usr/local/mccs/bin/sas_data.pl --type SALE_SAS_PROD --database rms_p_force --merchyear $year  --merchweek $week &
+      nohup /usr/local/mccs/bin/SAS/sas_data.pl --type SALE_SAS_PROD --database rms_p_force --merchyear $year  --merchweek $week &
       var[$idx]=`echo $!`
       idx=`expr $idx + 1`
     else
@@ -83,7 +84,8 @@ echo "Lets Begin the wait $(date +%k:%M:%S)"
 flag="false"
 while [[ $flag != "true" ]]; do
   sleep 1200 #every 300 seconds = 5 minutes
-  /usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$run_dir/sas_weekly_complete.sql > $io_dir/sas_weekly_sw.txt
+  #/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$run_dir/sas_weekly_complete.sql > $io_dir/sas_weekly_sw.txt
+  sqlplus -s eric/ericdata@draix22.usmc-mccs.org/sastst @$run_dir/sas_weekly_complete.sql > $io_dir/sas_weekly_sw.txt 2>/tmp/error3
   sleep 10 #
 #  echo "20 Minutes have passed $(date +%k:%M:%S)"
   tmp=""
@@ -115,7 +117,7 @@ while read line; do
     if [[ $rec =~ "^rec" ]] 
     then
       echo "Just kicking off another INVENTORY process $year $week"
-      nohup /usr/local/mccs/bin/sas_data.pl --type INVENTORY_SAS_PROD --database sasprd  --merchyear "$year" --merchweek "$week" &
+      nohup /usr/local/mccs/bin/SAS/sas_data.pl --type INVENTORY_SAS_PROD --database sasprd  --merchyear "$year" --merchweek "$week" &
       var[$idx]=`echo $!`
       idx=`expr $idx + 1`
     else
@@ -127,7 +129,7 @@ done <"$weekly_file"
 echo ""
 echo "Creating OnOrder  "
 echo "Lets start creating ONORDER files  $(date +%k:%M:%S)"
-nohup  perl  /usr/local/mccs/bin/sas_data.pl --type ONORDER --database rms_p_force  &
+nohup  perl  /usr/local/mccs/bin/SAS/sas_data.pl --type ONORDER --database rms_p_force  &
 idx=`expr $idx + 1`
 var[$idx]=`echo $!`
 
@@ -170,9 +172,9 @@ echo "Oh boy! we are done with the scrubbing   $(date +%k:%M:%S) Lets continue"
 
 echo "Not running SFTP Now"
 #echo ""
-#echo "Here is where we ftp files to sasmdi draix12"
+#echo "Here is where we ftp files to sasmdi draix22"
 # use expect to send files over sftp using commandline batch
-#/usr/local/mccs/bin/sas_weekly_sftp.exp
+#/usr/local/mccs/bin/SAS/sas_weekly_sftp.exp
 #b=`echo $!`
 #wait $b
 
