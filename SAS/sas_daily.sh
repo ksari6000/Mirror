@@ -17,7 +17,7 @@ echo "Start Time: $(date +%H:%M:%S)"
 echo "Creating Merch/Product"
 
 for a in DIVISION LOB DEPARTMENT CLASS SUBCLASS STYLE_BOP PRODUCT_BOP; do
-  nohup  perl  /usr/local/mccs/bin/sas_data.pl --type $a --database rms_p_force  &
+  nohup  perl  /usr/local/mccs/bin/SAS/sas_data.pl --type $a --database rms_p_force  &
   var[$idx]=`echo $!`
   idx=`expr $idx + 1`
 done
