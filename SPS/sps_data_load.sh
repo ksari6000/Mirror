@@ -12,7 +12,7 @@ echo "Lets start creating SPS files  $(date +%k:%M:%S)"
 
 #/usr/bin/sqlplus -S rdiusr/stop50@draix01.usmc-mccs.org/mc2p @/usr/local/mccs/bin/sps_get_weeks.sql > $weekly_file
 
-sqlplus -s rdiusr/stop50@draix01.usmc-mccs.org/mc2p @/usr/local/mccs/bin/sps_get_weeks.sql > $weekly_file
+sqlplus -s rdiusr/stop50@draix01.usmc-mccs.org/mc2p @/usr/local/mccs/bin/sps_get_weeks.sql > $weekly_file b
 
 nohup perl /usr/local/mccs/bin/sps_data_load.pl --type LOCATION --database rms_r --archive --nosend --debug 1 &
 var[$idx]=`echo $!`

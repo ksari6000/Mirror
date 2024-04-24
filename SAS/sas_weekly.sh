@@ -30,7 +30,7 @@ case $1 in
 esac
 
 echo "Running SqlPlus to start SAS Data Batch Process"
-/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$io_dir/sas_weekly_get_$1_weeks.sql > $io_dir/merch_weeks
+/usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$io_dir/sas_weekly_get_$1_weeks.sql > $io_dir/merch_weeks 
 /usr/bin/sqlplus -S eric/ericdata@draix12.usmc-mccs.org/sasprd @$run_dir/sas_weekly_$1_start.sql
 echo ""
 echo ""
