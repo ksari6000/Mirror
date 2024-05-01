@@ -31,7 +31,7 @@ my $g_cfg = new MCCS::Config;
 
 # Retrieve list of email addresses to be used by process
 #my $g_emails = $g_cfg->npd_DATA->{emails};  TODO , remove two next lines.
-my $g_mails;
+my $g_emails;  # Corrected to $g_emails v. $g_mails
 $g_emails->{kav} ='kaveh.sari@usmc-mccs.org'; 
 
 # Extract file name to produce for NPD from configuration
