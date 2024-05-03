@@ -1,0 +1,3599 @@
+<?xml version='1.0'?>
+<config>
+   <primary>
+      <cfgparam>
+         <name>topdir</name>
+         <value>/usr/local/mccs</value>
+      </cfgparam>
+      <cfgparam>
+         <name>datadir</name>
+         <value>/usr/local/mccs/data</value>
+      </cfgparam>
+      <cfgparam>
+         <name>dbhost</name>
+         <value>localhost</value>
+      </cfgparam>
+      <cfgparam>
+         <name>dbuser</name>
+         <value>
+            application</value>
+      </cfgparam>
+      <cfgparam>
+         <name>dbpasswd</name>
+         <value>
+            application
+         </value>
+      </cfgparam>
+      <cfgparam>
+         <name>dbschema</name>
+         <value>ibis
+         </value>
+      </cfgparam>
+   </primary>
+   <application name="banking">
+      <cfgparam>
+         <name>MODE</name>
+         <value>prod</value>
+         <desc>
+            Controls value of PAR record field 8.
+            "prod" for production, anything else is testing.
+         </desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DATASRC</name>
+         <value>fmsprod</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DATASRCDIR</name>
+         <value>/axsone/ctron/data/ciaprele</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SRCUSER</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SRCPASSWD</name>
+         <value></value>
+         <desc>Do not use.  Not needed with proper PKI techiques.</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>NOBOATX</name>
+         <value>0</value>
+         <desc>Disable BOA ftp for testing</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BOAFTP</name>
+         <value>elink-ftp4.bankofamerica.com</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXUSER</name>
+         <value>MARINCQI</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXPASSWD</name>
+         <value>N6YEFPW5</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXBATCHID</name>
+         <value>"PGP ECS INBNDR CAFRCQI"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXUSER</name>
+         <value>MARINCRO</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXPASSWD</name>
+         <value>LY21EUVE</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXBATCHID</name>
+         <value>"$$ ID=MARINCRO BID= 'PGP ECS OUTBNR CAFSCRO' ONEBATCH=Y"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PMUSER</name>
+         <value>MCPFREAI</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PMPASSWD</name>
+         <value>NALRVY64</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PMBATCHID</name>
+         <value>"PGP PMD INBNDR MEFRPMD"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RECONUSER</name>
+         <value>MCCSAP1O</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RECONPASSWD</name>
+         <value>OF34Z949</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RECONBATCHID</name>
+         <value>"$$ ID=MCCSAP1O BID= 'PGP IAR OUTBNR GAFS4VX' ONEBATCH=Y"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXINUSER</name>
+         <value>MCCSACPO</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXINPASSWD</name>
+         <value>KERR6B3K</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>MCCSKEY</name>
+         <value>5D2C4498</value>
+         <desc>Key ID for HQRMCCS Finance</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>MCCSPPHRASE</name>
+         <value>we are semper gumby!</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BOAKEYID</name>
+         <value>A1C09977</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>APABA</name>
+         <value>061112788</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>APSETTLEMENT</name>
+         <value>3299126583</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PRSETTLEMENT</name>
+         <value>3299126575</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify</name>
+         <value key="Stough Ms Brenda">stoughbj@usmc-mccs.org</value>
+	 <value key="Anthony Sartori">sartoria@usmc-mccs.org</value>
+	 <value key="Mary Ann Cullen">maryann.cullen@usmc-mccs.org</value>
+	 <value key="Sonya Norton">sonya.norton@usmc-mccs.org</value>
+	 <value key="Erin Smith">erin.smith@usmc-mccs.org</value>
+	 <value key="Nancy Arnold">Nancy.Arnold@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify_vm</name>
+	 <value key="Sonya Norton">sonya.norton@usmc-mccs.org</value>
+	 <value key="Erin Smith">erin.smith@usmc-mccs.org</value>
+	 <value key="Nancy Arnold">Nancy.Arnold@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify_cc</name>
+         <value key="MRI-RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>scrubdays</name>
+         <value>180</value>
+         <desc>Numbers of days to keep files on disk</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>FMSGENEXDIR</name>
+         <value>/ctron/data/apgenex</value>
+         <desc>FMS directory for genex</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEXPROC</name>
+         <value>/usr/local/mccs/scripts/Genex_Recon.ksh</value>
+         <desc>Genex Script at FMS boxes</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_LOGFILE</name>
+         <value>/usr/local/mccs/log/bank_reconciliation.log</value>
+         <desc>bank_reconciliation.pl logfile</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_APDIR</name>
+         <value>/usr/local/mccs/data/banking/APrecon</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEX_APDIR</name>
+         <value>/usr/local/mccs/data/banking/APgenex</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_PMDIR</name>
+         <value>/usr/local/mccs/data/banking/PMrecon</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_MERGEDIR</name>
+         <value>/usr/local/mccs/data/banking/ReconMerge</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_PREFIX</name>
+         <value>recon</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_LINK_PREFIX</name>
+         <value>Recon</value>
+         <desc></desc>
+      </cfgparam>
+   </application>
+   <application name="banking_secure">
+      <cfgparam>
+         <name>MODE</name>
+         <value>prod</value>
+         <desc>
+            Controls value of PAR record field 8.
+            "prod" for production, anything else is testing.
+         </desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DATASRC</name>
+         <value>fmsprod</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DATASRCDIR</name>
+         <value>/axsone/ctron/data/ciaprele</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SRCUSER</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SRCPASSWD</name>
+         <value></value>
+         <desc>Do not use.  Not needed with proper PKI techiques.</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>NOBOATX</name>
+         <value>0</value>
+         <desc>Disable BOA ftp for testing</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BOAFTP</name>
+         <value>elink-ftp4.bankofamerica.com</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXUSER</name>
+         <value>MARINCQI</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXPASSWD</name>
+         <value>N6YEFPW5</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXBATCHID</name>
+         <value>"PGP ECS INBNDR CAFRCQI"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXUSER</name>
+         <value>MARINCRO</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXPASSWD</name>
+         <value>LY21EUVE</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXBATCHID</name>
+         <value>"$$ ID=MARINCRO BID= 'PGP ECS OUTBNR CAFSCRO' ONEBATCH=Y"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PMUSER</name>
+         <value>MCPFREAI</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PMPASSWD</name>
+         <value>NALRVY64</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PMBATCHID</name>
+         <value>"PGP PMD INBNDR MEFRPMD"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RECONUSER</name>
+         <value>MCCSAP1O</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RECONPASSWD</name>
+         <value>OF34Z949</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RECONBATCHID</name>
+         <value>"$$ ID=MCCSAP1O BID= 'PGP IAR OUTBNR GAFS4VX' ONEBATCH=Y"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXINUSER</name>
+         <value>MCCSACPO</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXINPASSWD</name>
+         <value>KERR6B3K</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>MCCSKEY</name>
+         <value>5D2C4498</value>
+         <desc>Key ID for HQRMCCS Finance</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>MCCSPPHRASE</name>
+         <value>we are semper gumby!</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BOAKEYID</name>
+         <value>A1C09977</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>APABA</name>
+         <value>061112788</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>APSETTLEMENT</name>
+         <value>3299126583</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PRSETTLEMENT</name>
+         <value>3299126575</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify</name>
+	 <value key="HJ">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify_vm</name>
+	 <value key="MRI-RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify_cc</name>
+	 <value key="MRI-RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>scrubdays</name>
+         <value>180</value>
+         <desc>Numbers of days to keep files on disk</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>FMSGENEXDIR</name>
+         <value>/ctron/data/apgenex</value>
+         <desc>FMS directory for genex</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEXPROC</name>
+         <value>/usr/local/mccs/scripts/Genex_Recon.ksh</value>
+         <desc>Genex Script at FMS boxes</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_LOGFILE</name>
+         <value>/usr/local/mccs/log/bank_reconciliation.log</value>
+         <desc>bank_reconciliation.pl logfile</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_APDIR</name>
+         <value>/usr/local/mccs/data/banking_sftp/APrecon</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEX_APDIR</name>
+         <value>/usr/local/mccs/data/banking_sftp/APgenex</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_PMDIR</name>
+         <value>/usr/local/mccs/data/banking_sftp/PMrecon</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_MERGEDIR</name>
+         <value>/usr/local/mccs/data/banking_sftp/ReconMerge</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_PREFIX</name>
+         <value>recon</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>BANKRECON_LINK_PREFIX</name>
+         <value>Recon</value>
+         <desc></desc>
+      </cfgparam>
+   </application>
+   <application name="fms_hsi">
+      <cfgparam type="hash">
+         <name>programmer_emails</name>
+         <value key="HQHSISTAFF">HQHSIAdmins@usmc-mccs.org</value>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>ARCHIVE_D</name>
+         <value>/usr/local/mccs/data/hsi/archive</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DOWNLOAD_D</name>
+         <value>/usr/local/mccs/data/hsi/download</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TMP_FILE_D</name>
+         <value>/usr/local/mccs/data/hsi/tmp_remote</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEX_OUT_D</name>
+         <value>/usr/local/mccs/data/hsi/hsi_gend</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEX_PREFIX</name>
+         <value>FHGEN</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>PROD_SITES</name>
+         <value>ALM_0001</value>
+         <value>ALM_0002</value>
+         <value>ALM_0003</value>
+         <value>BNM_0001</value>
+         <value>CPM_0001</value>
+         <value>CPM_0002</value>
+         <value>CPM_0005</value>
+         <value>CPM_0006</value>
+         <value>CPM_0007</value>
+         <value>CPM_0009</value>
+         <value>CPM_0010</value>
+         <value>CPM_0011</value>
+         <value>GCM_0001</value>
+         <value>HHM_0001</value>
+         <value>HHM_0002</value>
+         <value>IWM_0001</value>
+         <value>IWM_0003</value>
+         <value>IWM_0005</value>
+         <value>IWM_0006</value>
+         <value>IWM_0007</value>
+         <value>KBM_0001</value>
+         <value>KBM_0002</value>
+         <value>KBM_0003</value>
+         <value>KBM_0004</value>
+         <value>KBM_0005</value>
+         <value>KBM_0006</value>
+         <value>KBM_0007</value>
+         <value>KBM_0008</value>
+         <value>KBM_0009</value>
+         <value>KBM_0010</value>
+         <value>KBM_0011</value>
+         <value>MRM_0001</value>
+         <value>MRM_0002</value>
+         <value>MRM_0003</value>
+         <value>MRM_0004</value>
+         <value>MRM_0009</value>
+         <value>PNM_0004</value>
+         <value>PNM_0005</value>
+         <value>PNM_0007</value>
+         <value>PNM_0009</value>
+         <value>PNM_BAM1</value>
+         <value>QUM_0001</value>
+         <value>QUM_0002</value>
+         <value>QUM_0005</value>
+         <value>QUM_0006</value>
+         <value>QUM_0007</value>
+         <value>QUM_0008</value>
+         <value>SCM_BEA1</value>
+         <value>SCM_BEA2</value>
+         <value>SCM_BEA3</value>
+         <value>SCM_PI01</value>
+         <value>SCM_PI02</value>
+         <value>SCM_PI03</value>
+         <value>SCM_PI04</value>
+         <value>SCM_PI05</value>
+         <value>SCM_PI06</value>
+         <value>SCM_PI07</value>
+         <value>SDM_0005</value>
+         <value>SDM_0004</value>
+         <value>SDM_0002</value>
+         <value>SDM_0003</value>
+         <value>TWM_0001</value>
+         <value>TWM_0002</value>
+         <value>TWM_0003</value>
+         <value>TWM_0005</value>
+         <value>TWM_0006</value>
+         <value>TWM_0007</value>
+         <value>TWM_0008</value>
+         <value>TWM_0009</value>
+         <value>TWM_0010</value>
+         <value>TWM_0011</value>
+         <value>TWM_0012</value>
+         <value>TWM_BRI1</value>
+         <value>YUM_0001</value>
+         <value>YUM_0002</value>
+         <value>YUM_0003</value>
+      </cfgparam>
+      <cfgparam>
+         <name>WINDOWSREMOTEHOST</name>
+         <value>myhsi.usmc-mccs.org</value>
+         <desc>Windows host where HSI process get the source files</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>HOSTNAMEDEV</name>
+         <value>fmsdev</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>HOSTNAMEPROD</name>
+         <value>fmsprod</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>USERNAME</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DATADIR</name>
+         <value>/d/myMicros/RTA/ImportExport/10003/MCCSGLExport/export</value>
+         <desc>The new HSI remote data directory</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEXPROC</name>
+         <value>/usr/local/mccs/bin/hsi_genex.pl</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RFL</name>
+         <value>/export/home/hsiusr/hsistage</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PRFL</name>
+         <value>/export/home/rdiusr/hsistage</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PDIR</name>
+         <value>/home/rdiusr/hsi_proc</value>
+         <desc></desc>
+      </cfgparam>
+   </application>
+   <application name="apcif">
+      <cfgparam>
+         <name>sftpuser</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>datasrc</name>
+         <value>fmsprod</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>srcdir</name>
+         <value>/ctron/data/banktape</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>txfile</name>
+         <value>cifaptx</value>
+         <desc></desc>
+      </cfgparam>
+   </application>
+   <application name="prcif">
+      <cfgparam>
+         <name>sftpuser</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>datasrc</name>
+         <value>hrmsprod.usmc-mccs.org</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>srcdir</name>
+         <value>/usr/tmp</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>txfile</name>
+         <value>cifprtx</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXUSER</name>
+         <value>MCCSPRPI</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXPASSWD</name>
+         <value>Z0P05YVP</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TXBATCHID</name>
+         <value>"PGP IAR ISSUER GAFR3V3"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXUSER</name>
+         <value>MCCSPRPA</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXPASSWD</name>
+         <value>09I1901A</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RXBATCHID</name>
+         <value>"$$ ID=MCCSPRPA BID= 'PGP IAR AIACKR GAFS3V3' ONEBATCH=Y"</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>MCCSKEY</name>
+         <value>7F889273</value>
+         <desc>Key ID for HQRMCCS HR</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>MCCSPPHRASE</name>
+         <value>semper gumby oorah!</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify</name>
+         <value key="Young Ms Leslie">leslie.young@usmc-mccs.org</value>
+         <value key="People Connection">peopleconnection@usmc-mccs.org</value>
+         <value key="Waters Melanie">watersm@usmc-mccs.org</value>
+         <value key="Javaid Haroon">haroon.javaid@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify_sftp</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>notify_cc</name>
+         <value key="MRI-RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>mtime_file</name>
+         <value>/usr/local/mccs/data/banking/PRcif/storable/max_mtime_file</value>
+         <desc>File that stored the maximum modification time from the last file that we retrieve from hr  server</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>download_dir</name>
+         <value>/usr/local/mccs/data/banking/PRcif/download</value>
+         <desc>directory where we store the downloaded pr file from hr server</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>enc_dir</name>
+         <value>/usr/local/mccs/data/banking/PRcif/encrypt</value>
+         <desc>directory where we store the encrypted pr file from hr server</desc>
+      </cfgparam>
+   </application>
+   <application name="rectrak2fms">
+      <cfgparam type="array">
+         <name>EASTCOASTSITES</name>
+         <value>alm</value>
+         <value>elm</value>
+         <value>cpm</value>
+         <value>clm</value>
+         <value>qum</value>
+         <value>hhm</value>
+         <value>eim</value>
+         <value>scm</value>
+         <desc>East Coast Command Site</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>WESTCOASTSITES</name>
+         <value>twm</value>
+         <value>sdm</value>
+         <value>mrm</value>
+         <value>yum</value>
+         <value>pnm</value>
+         <value>bam</value>
+         <value>nrm</value>
+         <desc>WestCoast Command Site</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>FMSPRODSITES</name>
+         <value>alm</value>
+         <value>bum</value>
+         <value>hhm</value>
+         <value>qum</value>
+         <value>yum</value>
+         <value>clm</value>
+         <value>pnm</value>
+         <value>elm</value>
+         <value>bam</value>
+         <value>iwm</value>
+         <value>scm</value>
+         <value>cpm</value>
+         <value>mrm</value>
+         <value>eim</value>
+         <value>twm</value>
+         <value>sdm</value>
+         <value>kbm</value>
+         <desc>Command Site for FMSPROD</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>AUTOPOST_SITES</name>
+         <value>alm</value>
+         <value>clm</value>
+         <value>cpm</value>
+         <value>eim</value>
+         <value>elm</value>
+         <value>hhm</value>
+         <value>iwm</value>
+         <value>mrm</value>
+         <value>pnm</value>
+         <value>qum</value>
+         <value>scm</value>
+         <value>sdm</value>
+         <value>twm</value>
+         <value>kbm</value>
+         <value>yum</value>
+         <desc> Command Site that is autopost in PROD</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>FMSDEVSITES</name>
+         <value>sdm</value>
+         <value>pnm</value>
+         <desc>Command Site for FMSDEV</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>EASTSITES</name>
+         <value>iwm</value>
+         <value>bum</value>
+         <desc>Command Site for Asia (japan, etc)</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>HAWAIISITES</name>
+         <value>kbm</value>
+         <desc>Hawaii Marine Command Site</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>EMAILS</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="Tin Nguyen">nguyent@usmc-mccs.org</value>
+         <value key="Emilio Arroyo">arroyoe@usmc-mccs.org</value>
+         <value key="Nancy Aggarwal">Nancy.Aggarwal@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>SftpUser</name>
+         <value>rdiusr</value>
+         <desc>Username on FTP</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SftpHost</name>
+         <value>hqbsdrt04</value>
+         <desc>Hostname where we get the rectrac data</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SftpDir</name>
+         <!--<value>/vsibak/rcpts/gl</value>-->
+         <value>/interface/rectrac</value>
+         <desc>Directory where we get the rectrac data</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>LocalDataDir</name>
+         <value>/usr/local/mccs/data/rec2fms</value>
+         <desc>Directory where we store the rectrac data</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>EmailSignature</name>
+         <value>HQ help desk  email: hq.help@usmc-mccs.org</value>
+         <desc>Email signature contact</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DownloadDir</name>
+         <value>/usr/local/mccs/data/rec2fms/download</value>
+         <desc>File downloaded from SFTP are stored here</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>ArchiveDir</name>
+         <value>/usr/local/mccs/data/rec2fms/archive</value>
+         <desc>All files collection</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GenexedDir</name>
+         <value>/usr/local/mccs/data/rec2fms/genexed_files</value>
+         <desc>Files that are genexed</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>StorableDir</name>
+         <value>/usr/local/mccs/data/rec2fms/storable</value>
+         <desc>Setting directory, Epoch saved file, etc</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>rdiusrfms</name>
+         <value>2UC9ze</value>
+         <desc>seed</desc>
+      </cfgparam>
+   </application>
+   <application name="ibis_physical_inventory">
+      <cfgparam>
+         <name>DESTHOST</name>
+	 <value>draix01</value>
+	 <desc>Local server to send WIS inventory to</desc>
+      </cfgparam>
+       <cfgparam>
+           <name>FTP_SERVER</name>
+           <!-- <value>ftp.wisintl.com</value> -->
+           <value>ftp.datascan.com</value>
+           <desc>new Datascan SFTP server</desc>
+       </cfgparam>
+       <cfgparam>
+           <name>LOCAL_DIR</name>
+           <value>/usr/local/mccs/data/physical_inventory</value>
+           <desc>local directory where file downloaded to</desc>
+       </cfgparam>
+       <cfgparam>
+           <name>REMOTE_DIR</name>
+           <!-- <value>Inbox</value> -->
+           <value>/</value>
+           <desc>target to send datascan.com inventory </desc>
+       </cfgparam>
+       <cfgparam>
+           <name>REMOTE_DIR_OUT</name>
+           <value>Outbox</value>
+           <desc>WIS inventory outbox</desc>
+       </cfgparam>
+       <cfgparam>
+           <name>DB_NAME</name>
+           <value>rms_p</value>
+           <desc>Database name</desc>
+       </cfgparam>
+       <cfgparam>
+           <name>DRAIX_DIR_IN</name>
+           <value>/data/RAMPS/udump</value>
+           <desc>directory in draix where the final file should be</desc>
+       </cfgparam>
+       <cfgparam type="hash">
+         <name>EMAILS</name>
+         <value key="rdi">rdistaff@usmc-mccs.org</value>
+       </cfgparam>
+   </application>
+   <application name="spscommerce">
+      <cfgparam>
+         <name>SPS_INVOICE_LISTING_DOWNLOAD_DIR</name>
+         <value>/usr/local/mccs/data/edi/ftp/sps_invoice_listing</value>
+         <desc>where the FSyyyymmdd files downloaded</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>ADVANCED_SHIP_NOTICED_DOWNLOAD_DIR</name>
+         <value>/usr/local/mccs/data/edi/ftp/advanced_ship_notice</value>
+         <desc>location where SHyyyymmdd.73R files downloaded from sps</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>LOCAL_DIR</name>
+         <value>/usr/local/mccs/data/sps_commerce/sps_ftp_ack</value>
+         <desc>Directory where SPS archive files reside</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>REMOTE_DIR</name>
+         <value>out</value>
+         <desc>FTP source dir on SPS FTP site</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>REMOTE_TEST_DIR</name>
+         <value>testout</value>
+         <desc>FTP test source dir on SPS FTP site</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>EMAILS</name>
+         <value key="RMS Group">rms-analyst@usmc-mccs.org</value>
+         <value key="ESG">esg@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>DBNAME</name>
+         <value>rms_p</value>
+         <desc></desc>
+      </cfgparam>
+   </application>
+   <application name="sync_fms_rms_yen">
+      <cfgparam>
+         <name>FMS_DB</name>
+         <value>fms_pctc</value>
+      </cfgparam>
+      <cfgparam>
+         <name>RMS_DB</name>
+         <value>rms_p</value>
+      </cfgparam>
+      <cfgparam>
+         <name>LOG_DIR</name>
+         <value>/usr/local/mccs/log</value>
+      </cfgparam>
+      <cfgparam>
+         <name>EMAIL_SUBJECT</name>
+         <value>FMS to RMS Sync of current Currency Rate of YEN for one USD</value>
+         <desc>The Subject of the email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>EMAILS</name>
+         <value key="TO">rms-analyst@usmc-mccs.org</value>
+         <value key="FROM">rdistaff@usmc-mccs.org</value> 
+         <value key="CC">rdistaff@usmc-mccs.org,johnsonkir@usmc-mccs.org,leall@usmc-mccs.org,blevinsle@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="helpdesk">
+	   <cfgparam>
+		   <name>email</name>
+		   <value>hq.help@usmc-mccs.org</value>
+		   <desc>
+			   Helpdesk email address.
+		   </desc>
+	   </cfgparam>
+   </application>
+   <application name="interface_web">
+      <cfgparam>
+           <name>HOST</name>
+           <value>fmsprod.usmc-mccs.org</value>
+           <desc>Interface WEB FMS server</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>PORT</name>
+           <value>11472</value>
+           <desc>Interface WEB FMS server port number</desc>
+      </cfgparam>
+   </application>
+   <application name="REJECTED_SALES">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="Mike Thomas">thomasm@usmc-mccs.org</value>
+         <value key="RDI Staff">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="ActiveDirectory">
+      <cfgparam>
+           <name>port</name>
+           <value>389</value>
+           <desc>Active Directory server port number</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>base_dn</name>
+           <value>ou=commands,dc=windows,dc=usmc-mccs,dc=org</value>
+           <desc>Root dn</desc>
+      </cfgparam>
+   </application>
+   <application name="cvs_upload_POS">
+      <cfgparam>
+           <name>target_host</name>
+           <value>test_sftp_package</value>
+           <desc>testing sftp using draix03</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>target_dir</name>
+           <value>/home/rdiusr/tmp/</value>
+           <desc>location where POS filename is put</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>filename_prefix</name>
+           <value>CVS_POS_</value>
+           <desc>POS filename prefix</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>staging_dir</name>
+           <value>/usr/local/mccs/data/pos/staging/</value>
+           <desc>POS filename staging directory</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>archive_dir</name>
+           <value>/usr/local/mccs/data/pos/archive/</value>
+           <desc>POS file archive</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>log_file</name>
+           <value>/usr/local/mccs/log/cvs_upload_POS.log</value>
+           <desc>cvs_upload_POS log file</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>source_dir</name>
+           <value>/usr/local/mccs/data/cvs_upload/rpos_cvs/</value>
+           <desc> file dir for temp cvs file</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>redundant_dir</name>
+           <value>/usr/local/mccs/data/cvs_upload/rpos_cvs/redundant_dir/</value>
+           <desc> file dir for redundant ssn-nafi1-nafi2</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>rpos_file_prefix</name>
+           <value>NEGATIVECHECK</value>
+           <desc>file name for RPOS cvs file</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>POS_filename</name>
+           <value>NEGATIVECHECK</value>
+           <desc>rpos cvs filename at the remote target host</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>dbname</name>
+           <value>fms_pctc</value>
+           <desc>IBIS::DBI connect name</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>Compat</name>
+           <value>U2FsdGVkX1+FjAdOQD1OOls4acLOiwYp</value>
+           <desc>encrypted Compat for PGP</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>PubRing</name>
+           <value>U2FsdGVkX19jMx56qdAdtuJIdJWvlY8/sUT5Uwi2zupEI9ZVkaozjohn7QJQeNDfn+NQNDW1em8=</value>
+           <desc>encrypted PubRing for pgp</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>SecRing</name>
+           <value>U2FsdGVkX1+8veyd4ruiwHeFAw9htUyaSL9dR3NHclPziVdEdQ+kzw4Tv5nhSPVBJn5DWF1CrWE=</value>
+           <desc>encrypted SecRing</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>Recipients</name>
+           <value>U2FsdGVkX1/ukek1NefhQhq1WcO68o06VUdcctvPxgo=</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>SignKeyID</name>
+           <value>U2FsdGVkX19On3dQPg+7BIZLO2/+VYe2nWJNoUGp0iE=</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>SignPassphrase</name>
+           <value>U2FsdGVkX19H/5tpB/NOb6HVN8HIX/joDtIYYipiCEU=</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>aafes_host</name>
+           <value>ftp.aafes.com</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>aafes_user</name>
+           <value>usmccvs</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>aafes_password</name>
+           <value>U2FsdGVkX1+r5akwmY9m67i9SG9/Ge+4ARxv4zMhCy4=</value>
+           <desc>aafes encrypted password</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>remote_aafes_filename</name>
+           <value>aafes.pgp</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_aafes_filename</name>
+           <value>/usr/local/mccs/data/cvs_upload/rpos_cvs/aafes.pgp</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>email_from</name>
+           <value>rdistaff@usmc-mccs.org</value>
+           <desc>process email from address</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>email_to</name>
+           <value>rdistaff@usmc-mccs.org|</value>
+           <desc>email to address string, seprated by |</desc>
+      </cfgparam>
+   </application>
+   <application name="rwsInterface"> 
+      <cfgparam type="hash"> 
+         <name>emails</name> 
+         <value key="RDI Staff">rdistaff@usmc-mccs.org</value>
+      </cfgparam> 
+      <cfgparam> 
+        <name>search</name> 
+        <value>MCCS_RWS_HR_ERRORS</value> 
+        <desc>value used for grep'ing a ls of a certain dir</desc> 
+      </cfgparam> 
+      <cfgparam> 
+        <name>todir</name> 
+        <value>/rwssan/BATCH/MCCS_scripts/in</value> 
+        <desc></desc> 
+      </cfgparam> 
+      <cfgparam>
+        <name>server</name>
+        <value>Production</value>
+        <desc></desc>
+      </cfgparam>
+   </application> 
+   <application name="rwsHrba"> 
+      <cfgparam type="hash"> 
+         <name>emails</name> 
+         <value key="RDI Staff">rdistaff@usmc-mccs.org</value>
+         <value key="RMS-Analyst">rms-analyst@usmc-mccs.org</value>
+         <value key="Robert Horn">hornr@usmc-mccs.org</value>
+      </cfgparam> 
+      <cfgparam type="hash">
+         <name>TEST_emails</name>
+         <value key="RDI Staff">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam> 
+        <name>search</name> 
+        <value>MCCS_RWS_HR_ERRORS</value> 
+        <desc>value used for grep'ing a ls of a certain dir</desc> 
+      </cfgparam> 
+      <cfgparam> 
+        <name>todir</name> 
+        <value>/rwssan/BATCH/MCCS_scripts/in</value> 
+        <desc></desc> 
+      </cfgparam> 
+      <cfgparam>
+        <name>server</name>
+        <value>Production</value>
+        <desc></desc>
+      </cfgparam>
+   </application> 
+   <application name="empowerit">
+      <cfgparam>
+         <name>remote_host_id</name>  
+         <value>empowerit</value>
+      </cfgparam> 
+      <cfgparam>
+         <name>host</name>  
+         <value>sftp.empowerit.com</value>
+      </cfgparam> 
+      <cfgparam>
+         <name>remote_dir</name>  
+         <!--<value>/Initial_Weekly/Test/</value> -->
+         <value>/</value>
+      </cfgparam>                    
+      <cfgparam>
+         <name>username</name>
+         <value>rdiusr</value>
+      </cfgparam> 
+      <cfgparam>
+         <name>password</name>
+         <value>empower900</value>
+      </cfgparam> 
+      <cfgparam>
+         <name>local_dir</name>
+         <value>/usr/local/mccs/www/ibis.usmc-mccs.org/data/priv/apps/rms/empowerit/saved/</value>
+      </cfgparam> 
+      <cfgparam>
+        <name>filehistory</name>
+        <value>/usr/local/mccs/data/empowerit/EmpowerFileHistory</value>
+      </cfgparam> 
+      <cfgparam>
+        <name>webserver_relative_dir</name>                                            
+        <value>/priv/apps/rms/empowerit/saved/</value>    
+      </cfgparam>   
+   </application>
+   <application name="rposweb">
+     <cfgparam>
+       <name>local_dir</name>
+       <value>/usr/local/mccs/www/ibis.usmc-mccs.org/data/priv/apps/rms/rpos/report_dir/</value>
+      </cfgparam> 
+     <cfgparam>
+       <name>webserver_relative_dir</name>                                            
+       <value>/priv/apps/rms/rpos/report_dir/</value>    
+     </cfgparam>   
+     <cfgparam>
+       <name>site_list</name>                                            
+       <value>01020|01100|01200|01201|01399|01500|01700|01922|02001|02020|02100|02202|02205|02211|02212|02214|02301|02302|02304|02305|02306|02307|02399|02500|02800|02801|02802|02922|03001|03020|03021|03024|03100|03200|03300|03399|03400|03500|03600|03770|03800|03900|03901|03922|04100|04200|04300|04399|04400|04401|04500|04800|04900|04922|05001|05020|05100|05101|05102|05200|05201|05202|05203|05204|05205|05206|05207|05208|05209|05211|05214|05233|05300|05301|05302|05303|05304|05305|05306|05307|05308|05309|05310|05311|05312|05314|05315|05316|05399|05400|05401|05500|05800|05922|08100|08300|08399|08500|08922|09001|09100|09101|09102|09103|09300|09301|09399|09400|09500|09700|09922|10001|10020|10100|10101|10113|10114|10116|10117|10118|10119|10120|10222|10223|10225|10229|10230|10234|10251|10252|10303|10304|10314|10320|10321|10322|10323|10324|10325|10326|10331|10332|10333|10341|10342|10343|10344|10352|10353|10362|10364|10378|10379|10380|10399|10413|10451|10500|10501|10600|10601|10602|10922|11001|11100|11101|11104|11200|11300|11301|11399|11400|11401|11800|11900|11901|11902|11911|11916|11920|11921|11922|12100|12300|12399|12922|13001|13020|13100|13101|13302|13303|13304|13305|13306|13307|13314|13379|13380|13399|13800|13922|14100|14300|14301|14399|14400|14922|15001|15020|15100|15101|15200|15301|15302|15303|15304|15305|15399|15400|15922|16001|16020|16100|16101|16105|16106|16107|16200|16300|16301|16399|16400|16600|16601|16700|16701|16702|16703|16922|18100|18101|18102|18103|18110|18200|18300|18301|18303|18399|18401|18700|18701|18702|18703|18800|18801|18922|</value>    
+     </cfgparam>   
+     <cfgparam>
+       <name>report_script</name>                                            
+       <value>/usr/local/mccs/bin/rpos_fms_report_from_log.pl</value>    
+     </cfgparam>   
+   </application>
+   <application name="RDI_group">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="rws_cron_check">
+     <cfgparam>
+       <name>destination_server_id</name>
+       <value>rdiusr_draix52</value>
+       <desc>in netlogin.conf the real server is revealed</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>local_dir</name>
+       <value>/usr/local/mccs/data/reflexis</value>
+       <desc>directory where we have the RWS created by reflexis_volume_driver.pl</desc> 
+      </cfgparam> 
+     <cfgparam>
+       <name>remote_dir</name>
+       <value>/rwssan/SHARED/RWSMCCS/upload/2067/DTS/VD/Processed/VD02</value>
+       <desc>directory where RWS files completed loaded</desc> 
+      </cfgparam> 
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS-Analyst">rms-analyst@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>fallout_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS-Analyst">rms-analyst@usmc-mccs.org</value>
+         <value key="Robert Horn">hornr@usmc-mccs.org</value>
+         <value key="Cherie Ruskin">cherie.ruskin@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="rws_GUI">
+     <cfgparam>
+       <name>TEST_FTP_SERVER</name>
+       <value>rdiusr_hqaix50</value>
+       <desc>FTP connect name</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>TEST_REMOTE_DIR</name>
+       <value>/rwsapp/BATCH/MCCS_scripts/in</value>
+       <desc>Remote directory where the directory located</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FTP_SERVER</name>
+       <value>rdiusr_draix52</value>
+       <desc>FTP connect name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>REMOTE_DIR</name>
+       <value>/rwssan/BATCH/MCCS_scripts/in</value>
+       <desc>Remote directory where the directory located</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>REMOTE_CHECK_LOG_DIR</name>
+       <value>/rwssan/SHARED/RWSMCCS/upload/2067/DTS/HR/Processed/HR03</value>
+       <desc>RWS dir where all files that successfully uploaded into RWS system reside. This means if you see your flat file here, the flat file is in RWS system.</desc>
+     </cfgparam>
+     <cfgparam type="array">
+         <name>u_m_hq_sec_lvl</name>
+         <value>CORPORATE</value>
+         <value>COMMAND</value>
+         <value>STORE</value>
+     </cfgparam>
+     <cfgparam type="hash">
+         <name>u_m_hq_perm_grp</name>
+         <value key="1001">MRI Sysadmin</value>
+         <value key="1002">Business Ops Sysadmin</value>
+     </cfgparam> 
+     <cfgparam type="array">
+         <name>u_m_cmd_sec_lvl</name>
+         <value>COMMAND</value>
+         <value>STORE</value>
+     </cfgparam> 
+     <cfgparam type="hash">
+         <name>u_m_cmd_perm_grp</name>
+         <value key="4001">Command / Retail Director</value>
+         <value key="4002">Asset Protection</value>
+     </cfgparam>
+     <cfgparam type="array">
+         <name>u_m_site_sec_lvl</name>
+         <value>STORE</value>
+     </cfgparam>
+     <cfgparam type="hash">
+         <name>u_m_site_perm_grp</name>
+         <value key="5001">Site Manager</value>
+         <value key="DEPT_MGR">Area Sales Manager</value>
+         <value key="5002">Associate</value>
+     </cfgparam>
+     <cfgparam>
+       <name>REMOTE_LOG_DIR</name>
+       <value>/rwssan/BATCH/MCCS_scripts/log</value>
+       <desc>Directory location of RWS logfiles</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>LOCAL_LOG_FTP_DIR</name>
+       <value>/usr/local/mccs/data/rws/employee/logfiles</value>
+       <desc>Directory location of RWS logfiles</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FF_TERM_DIR</name>
+       <value>/usr/local/mccs/data/rws/employee/flat_files/terminate</value>
+       <desc>Directory location of RWS flat file terminate type</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FF_REHIRE_DIR</name>
+       <value>/usr/local/mccs/data/rws/employee/flat_files/rehire</value>
+       <desc>Directory location of RWS flat file rehire type</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FF_CHECKER_DIR</name>
+       <value> /usr/local/mccs/data/rws/employee/flat_files/checker</value>
+       <desc>Directory where the proof of the flat file is up in RWS</desc>
+     </cfgparam>
+     <cfgparam type="hash">
+       <name>emails</name>
+       <value key="RMS">rms-analyst@usmc-mccs.org</value>
+       <value key="rdi">rdistaff@usmc-mccs.org</value>
+     </cfgparam>
+     <cfgparam>
+       <name>FF_BUDGETS_DIR</name>
+       <value>/usr/local/mccs/data/rws/budgets/flat_files</value>
+       <desc>Directory where Budget flat files are written before being sent to RWS</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FF_BUDGETS_LOCAL_LOG_DIR</name>
+       <value>/usr/local/mccs/data/rws/budgets/log_files</value>
+       <desc>Directory where Budget load log files from RWS are temporarily stored for examination</desc>
+     </cfgparam>
+   </application>
+   <application name="e832">
+      <cfgparam> 
+         <name>dbname</name> 
+         <value>rms_p</value> 
+         <desc>global database connection</desc> 
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>programmer_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+           <name>remote_ftp_dir</name>
+           <value>testout</value>
+           <desc>FTP directory on which we get the XML files for E832</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_ftp_dir</name>
+           <value>/usr/local/mccs/data/e832/xml/downloaded</value>
+           <desc>FTP directory on which we get the XML files for E832</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>archive_dir</name>
+           <value>/usr/local/mccs/data/e832/xml/archive</value>
+           <desc>FTP directory on which we get the XML files for E832</desc>
+      </cfgparam>
+   </application>
+   <application name="RotateGLS">
+     <cfgparam>
+         <name>config_file</name>
+         <value>/usr/local/mccs/etc/dbi.conf</value>
+      </cfgparam> 
+      <cfgparam>
+        <name>archive_dir</name>                                            
+        <value>/usr/local/mccs/data/RotateGLS/archive</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>log_file</name>                                            
+        <value>/usr/local/mccs/log/RotateGLS.log</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>connection_id_p</name>                                            
+        <value>rms_p</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>connection_id_r</name>                                            
+        <value>rms_r</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>fr_user_svr</name>                                            
+        <value>rdiusr@draix01.usmc-mccs.org</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>to_user_svr</name>                                            
+        <value>rdiusr@draix02.usmc-mccs.org</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>gllookup_exe</name>                                            
+        <value>/usr/local/mccs/bin/GLLookupService.sh</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>email_cc_list</name>                                            
+        <value>rdistaff@usmc-mccs.org|</value>    
+      </cfgparam>   
+      <cfgparam>
+        <name>last_run_recording</name>                                            
+        <value>/usr/local/mccs/data/RotateGLS/last_run_recording</value>    
+      </cfgparam>   
+   </application>
+   <application name="npd_DATA">
+     <cfgparam>
+       <name>FTP_SERVER</name>
+       <value>mftp.npd.com</value>
+       <desc>FTP connect name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>USER</name>
+       <value>usmarine</value>
+       <desc>FTP user name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>PSWD</name>
+       <value>vibe01</value>
+       <desc>FTP user pswd</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>REMOTE_DIR</name>
+       <value>data.in/</value>
+       <desc>Remote directory where the directory located</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>ARC_DIR</name>
+       <value>/usr/local/mccs/data/npd/archive</value>
+       <desc>Archive directory for NPD files</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FILE_TO_FTP</name>
+       <value>SALE5625.zip</value>
+       <desc>File name to sftp</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FILE_TO_PRODUCE</name>
+       <value>SALE5625</value>
+       <desc>File name to produce</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>NUM_OF_CMDS</name>
+       <value>15</value>
+       <desc>File name to produce</desc>
+     </cfgparam>
+     <cfgparam type="hash">
+       <name>emails</name>
+       <value key="Di Liaison">di_liaison@npd.com</value>
+       <value key="Irene Iannuzzi">irene.iannuzzi@npd.com</value>
+       <value key="Mike Thomas">mike.thomas@usmc-mccs.org</value>
+       <value key="MCX Logistics">MCXLogistics@usmc-mccs.org</value> 
+       <value key="RDI">rdistaff@usmc-mccs.org</value>
+       <value key="RMS-Analyst">rms-analyst@usmc-mccs.org</value>
+     </cfgparam>
+   </application>
+   <application name="global_emails">
+     <cfgparam>
+       <name>edi_user_support</name>
+       <value>rms-analyst@usmc-mccs.org</value>
+       <desc>RMS group,  Alicia</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>rms_analyst</name>
+       <value>rms-analyst@usmc-mccs.org</value>
+       <desc>RMS group,  Alicia</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>support</name>
+       <value key="RMSGroup">rdistaff@usmc-mccs.org</value>
+     </cfgparam>
+     <cfgparam>
+       <name>rdi</name>
+       <value key="RDI">rdistaff@usmc-mccs.org</value>
+       <desc>Should be rdistaff@usmc-mccs.org</desc>
+     </cfgparam>
+   </application>
+   <application name="rcx_DATA">
+   <cfgparam>
+       <name>PR_HARDLINES_FILENAME</name>
+       <value>ProgPC_HARDLINES_</value>
+       <desc>Progressive Hardlines file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>PR_SOFTLINES_FILENAME</name>
+       <value>ProgPC_SOFTLINES_</value>
+       <desc>Progressive Softlines file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>PR_CONSUMABLES_FILENAME</name>
+       <value>ProgPC_CONSUMABLES_</value>
+       <desc>Progressive Consumables file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>PR_MILITARY_FILENAME</name>
+       <value>ProgPC_MILITARY_</value>
+       <desc>Progressive Military file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>NPR_HARDLINES_FILENAME</name>
+       <value>NonProgPC_HARDLINES_</value>
+       <desc>Non Progressive Hardlines file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>NPR_SOFTLINES_FILENAME</name>
+       <value>NonProgPC_SOFTLINES_</value>
+       <desc>Non Progressive Softlines file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>NPR_CONSUMABLES_FILENAME</name>
+       <value>NonProgPC_CONSUMABLES_</value>
+       <desc>Non Progressive Consumables file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>NPR_MILITARY_FILENAME</name>
+       <value>NonProgPC_MILITARY_</value>
+       <desc>Non Progressive Military file name</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>FTP_SERVER</name>
+       <value>mid01rcxsvr0001.windows.usmc-mccs.org</value>
+       <desc>RCX Server</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>USER</name>
+       <value>rdiusr_d</value>
+       <desc>RCX User</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>OLD_PSWD</name>
+       <value>U2FsdGVkX1+orgKpHDYnBl6nah601XyeWB+NQ9H0lo//Q4pYfvb1Vg==</value>
+       <desc>RCX Password</desc>
+   </cfgparam>
+   <cfgparam>
+      <name>PSWD</name>
+       <value>U2FsdGVkX184kuYDz03m/UvpIpyzKv+j8VA7AvmZcCOhCYGfRWEdZg==</value>
+       <desc>RCX Password</desc>
+   </cfgparam>
+   <cfgparam type="hash">
+     <name>REMOTE_DIRS</name>
+      <value key="FTP_SERVER_1">/rcxdev/price_changes/</value>
+      <value key="FTP_SERVER_2">/rcxtst/price_changes/</value>
+      <value key="FTP_SERVER_3">/rcxprd/price_changes/</value>
+      <value key="FTP_SERVER_4">/rcxprd/price_changes/</value>
+   </cfgparam>
+   <cfgparam>
+     <name>ARC_DIR</name>
+     <value>/usr/local/mccs/data/rcx/archive</value>
+     <desc>Archive directory for RCX Price Adjustment files</desc>
+   </cfgparam>
+   <cfgparam type="hash">
+     <name>emails</name>
+     <value key="RDIUSR">rdistaff@usmc-mccs.org</value>
+     <value key="RMS Group">rms-analyst@usmc-mccs.org</value>
+   </cfgparam>
+   <cfgparam type="hash">
+     <name>FTP_SERVERS</name>
+     <value key="FTP_SERVER_3">mid01rcxsvr0001.windows.usmc-mccs.org</value>
+     <value key="FTP_SERVER_4">mid01rcxsvr0002.windows.usmc-mccs.org</value>
+   </cfgparam>
+   </application>
+   <application name="ComplianceSolution">
+      <cfgparam type="hash">
+         <name>sftp</name>
+         <value key="user">mcxftp</value>
+         <value key="password">b7e9N5A0NhxS</value>
+         <value key="host">12.133.45.115</value>
+         <!-- value key="host">199.227.171.144</valuei -->
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="MRI-RDI">rdistaff@usmc-mccs.org</value> 
+         <value key="RMS">RMS-Analyst@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>last_date_time</name>
+         <value>ASNHEADER_DT</value>
+         <value>ASNDETAIL_DT</value>
+         <value>VISIBILITY</value>
+         <desc>File type to use a last datetime substitution </desc>
+      </cfgparam>
+   </application>
+<application name="AIMS_AUTO_PAY">
+   <cfgparam>
+       <name>db_name</name>
+       <value>irdb</value>
+       <desc>database to use</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>DUNS_FILE</name>
+       <value>/usr/local/mccs/data/aims/work/duns.list</value>
+       <desc>Input file for DUNS to process</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>DUNS_FILE_EXCLUDE</name>
+       <value>/usr/local/mccs/data/aims/work/duns_exclude.list</value>
+       <desc>Input file for DUNS to not process</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>DEFAULT_OUTPUT_DIR</name>
+       <value>/usr/local/mccs/data/aims/aims_auto_pay/</value>
+       <desc>Daily output directory</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>ARC_DIR</name>
+       <value>/usr/local/mccs/data/aims/aims_auto_pay/archive/</value>
+       <desc>Archive Directory</desc>
+   </cfgparam>
+   <cfgparam type="hash">
+   <name>emails</name>
+   <value key="RDIUSR">rdistaff@usmc-mccs.org</value>
+   </cfgparam>
+   <cfgparam type="hash">
+   </cfgparam>
+   <cfgparam type="hash">
+   </cfgparam>
+   <cfgparam type="hash">
+   </cfgparam>
+   <cfgparam type="hash">
+   <name>reset_emails</name>
+   <value key="RDI">rdistaff@usmc-mccs.org</value>
+   <value key="RMS">rms-analyst@usmc-mccs.org</value>
+   </cfgparam>
+   <cfgparam>
+       <name>COST_VAR_ACCOUNT_ID</name>
+       <value>5199</value>
+       <desc>Account identifier for Cost variances</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>QTY_VAR_ACCOUNT_ID</name>
+       <value>5105</value>
+       <desc>Account identifier for Qty variances</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>MAX_ALLOWED_VAR_AMOUNT</name>
+       <value>500</value>
+       <desc>Maximum $ variance allowed</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>MAX_ALLOWED_VAR_PCT</name>
+       <value>999999999</value>
+       <desc>Maximum % variance allowed</desc>
+   </cfgparam>
+   </application>
+   <application name="SpsDataLoad">
+      <cfgparam type="hash">
+         <name>sftp</name>
+         <value key="user">MCX</value>
+         <value key="password">Wu5wUfAy</value>
+         <value key="host">carsftp.edificeinfo.com</value>
+      </cfgparam>
+   </application>
+   <application name="acv_DATA">
+   <cfgparam>
+       <name>DEPARTMENTS_FILENAME</name>
+       <value>DepartmentList_</value>
+       <desc>Name for Department list flat file</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>CATEGORIES_FILENAME</name>
+       <value>CategoryList_</value>
+       <desc>Name for Category list flat file</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>ITEM_LIB_LIST_FILENAME</name>
+       <value>ItemLibList_</value>
+       <desc>Name for Item Lib List flat file</desc>
+   </cfgparam>
+   <cfgparam type="hash">
+   <name>FTP_SERVERS</name>
+   <!-- <value key="FTP_SERVER_1">transfer.cloud.lexmark.com</value> -->
+   <value key="FTP_SERVER_1">import.cloud.lexmark.com</value>
+   </cfgparam>
+   <cfgparam type="hash">
+   <name>REMOTE_DIRS</name>
+   <!-- <value key="FTP_SERVER_1">Prod/</value>-->
+   <value key="FTP_SERVER_1"></value>
+   </cfgparam>
+   <cfgparam>
+       <name>USER</name>
+       <!-- <value>USMCFTP-MCX</value> -->
+       <value>usmcprod</value>
+       <desc>ACV User</desc>
+   </cfgparam>
+   <cfgparam>
+       <name>PSWD</name>
+       <!-- <value>U2FsdGVkX1/wiaMDpkNPou/ja+3mqBezwkwJnohRvsA=</value> -->
+       <value>8C72FqnkMSnZF3k7</value>
+       <desc>ACV Password</desc>
+   </cfgparam>
+   <cfgparam>
+   <name>ARC_DIR</name>
+   <value>/usr/local/mccs/data/acv/archive</value>
+   <desc>Archive directory for ACV Price Adjustment files</desc>
+   </cfgparam>
+   <cfgparam type="hash">
+   <name>emails</name>
+   <value key="RDI">rdistaff@usmc-mccs.org</value>
+   <value key="MSST">rms-analyst@usmc-mccs.org</value>
+   </cfgparam>
+   </application>
+   <application name="ffreight">
+      <cfgparam type="hash">
+         <name>excl_item_entry_tag</name>
+         <value key="QUM">Quantico</value>
+         <value key="YUM">Yuma</value>
+         <value key="PNM">Pendleton</value>
+         <value key="HQM">HQ</value>
+         <value key="CLM">Le Jeune</value>
+         <value key="SDM">San Diego</value>
+         <value key="CPM">Cherry Point</value>
+         <value key="ALM">Albany</value>
+         <value key="SCM">South Carolina</value>
+         <value key="BAM">Barstow</value>
+         <value key="MRM">Miramar</value>
+         <value key="TWM">Twenty Nine</value>
+         <value key="ELM">Elmore</value>
+         <value key="KBM">K Bay</value>
+         <value key="NRM">Nine</value>
+         <value key="IWM">Iwakuni</value>
+         <value key="HHM">Henderson Hall</value>
+         <value key="Hen">Henderson</value>
+      </cfgparam>
+   </application>
+   <application name="TAS_svr_check">
+      <cfgparam>
+           <name>server</name>
+           <value>10.151.14.30</value>
+           <desc>Checking this server up or down</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>base_dir</name>
+           <value>/TAS_HELPER_LOGS</value>
+           <desc>Base directory at TAS sftp server</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_dir</name>
+           <value>/usr/local/mccs/data/TAS/check/error</value>
+           <desc>local dir where the error file downloaded to</desc>
+      </cfgparam>
+     <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RMS">rms-analyst@usmc-mccs.org</value>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>text_phone</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>dev_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="sears">
+      <cfgparam>
+           <name>target_server</name>
+           <value>fmsprod.usmc-mccs.org</value>
+           <desc>server files to go to </desc>
+      </cfgparam>
+      <cfgparam>
+           <name>remote_dir</name>
+           <value>/export/home/batcron/data/in/sears/gl/</value>
+           <desc>remote path for files to go</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_dir</name>
+           <value>/usr/local/mccs/data/sears/temp/</value>
+           <desc>local dir for files to go</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_archive_dir</name>
+           <value>/usr/local/mccs/data/sears/archive/</value>
+           <desc>local dir for files to archive</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>log_file</name>
+           <value>/usr/local/mccs/log/sears_commision.log</value>
+           <desc>log file for the process </desc>
+      </cfgparam>
+      <cfgparam>
+           <name>remote_scp_user</name>
+           <value>rdiusr</value>
+           <desc>user for doing scp</desc>
+      </cfgparam>
+   </application>
+   <application name="edi_850">
+      <cfgparam>
+           <name>sftp_host</name>
+           <value>sftp.spscommerce.com</value>
+           <desc>SFTP host where we get or put files</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_user</name>
+           <value>mcx</value>
+           <desc>SFTP username</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_pass</name>
+           <value>U2FsdGVkX18CwtERL5t184zbufX/cet73OohOJagnpc=</value>
+           <desc>SFTP password encrypted</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_out_dir</name>
+           <value>/out</value>
+           <desc>SFTP outbound directory</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>download_dir</name>
+           <value>/usr/local/mccs/data/e850/download/invoice/xml</value>
+           <desc>directory where xml file will be downloaded</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>archive_dir</name>
+           <value>/usr/local/mccs/data/e850/archive/invoice/xml</value>
+           <desc>archive directory</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>storable_dir</name>
+           <value>/usr/local/mccs/data/e850/storable/invoice</value>
+           <desc>SFTP outbound directory</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="MCCS-REQ">MCCS-REQ@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="Rdistaff">rdistaff@usmc-mccs.org</value>
+         <value key="MCCS-REQ">MCCS-REQ@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="sps_SFTP">
+      <cfgparam>
+           <name>sftp_host</name>
+           <value>sftp.spscommerce.com</value>
+           <desc>SFTP host where we get or put files</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_user</name>
+           <value>mcx</value>
+           <desc>SFTP username</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_port</name>
+           <value>10022</value>
+           <desc>SFTP custom port</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_pass</name>
+           <value>U2FsdGVkX18CwtERL5t184zbufX/cet73OohOJagnpc=</value>
+           <desc>SFTP password encrypted</desc>
+      </cfgparam>
+   </application>
+   <application name="rws_budget">
+      <cfgparam>
+           <name>remote_dir</name>
+           <value>/usr/local/mccs/data/rws/budgets/excel/reports/</value>
+           <desc>remote path for files to go</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_dir</name>
+           <value>/usr/local/mccs/data/rws/budgets/excel/reports/</value>
+           <desc>local dir for files to go</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>local_archive_dir</name>
+           <value>/usr/local/mccs/data/rws_budget/archive/</value>
+           <desc>local dir for files to archive</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>log_file</name>
+           <value>/usr/local/mccs/log/rws_budget_extract.log</value>
+           <desc>log file for the process </desc>
+      </cfgparam>
+      <cfgparam>
+           <name>remote_scp_user</name>
+           <value>rdiusr</value>
+           <desc>user for doing scp</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>is_debug</name>
+           <value>0</value>
+           <desc>set to debug mode as 1 or not as 0</desc>
+      </cfgparam>
+   </application>
+   <application name="wms_global">
+      <cfgparam>
+           <name>DEBUG</name>
+           <value>0</value>
+           <desc>set to debug mode as 1 or not as 0</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>CTRON</name>
+           <value>ctron</value>
+           <desc>ctron dir env</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>T4_COMPUTRON_BASE_DIR</name>
+           <value>/ctron/data/glgenex</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftp_bucket</name>
+           <value>/usr/local/wms/data/sftp/bucket</value>
+           <desc>SFTP bucket directory where the files should go to NFI</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>inbound_dir</name>
+           <value>/home/MCX/Inbound</value>
+           <desc>inbound directory, where we send the file to</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>outbound_dir</name>
+           <value>/home/MCX/Outbound</value>
+           <desc>outbound directory, where we pull the file from</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>outbound_ack_dir</name>
+           <value>/home/MCX/ACKOUT</value>
+           <desc>Outbound ack dir. One ack per one file. We create ack here.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>inbound_ack_dir</name>
+           <value>/home/MCX/ACKIN</value>
+           <desc>Inbound acknowledment directory, where NFI create ack. One ack per one file.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>outfile_dir</name>
+           <value>/usr/local/wms/data/flatfile</value>
+           <desc>default dir where flat file created</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>nfi_host</name>
+           <value>50.204.97.49</value>
+           <desc>Production server</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>nfi_user</name>
+           <value>MCX</value>
+           <desc>user on dev server</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>nfi_pw</name>
+           <value>curlYfact59</value>
+           <desc>pw on dev server</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="rdistaff">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+           <name>smtp_east</name>
+           <value>259-mcx@nfiindustries.com</value>
+           <desc>Email address for east coast</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>smtp_west</name>
+           <value>659-mcx@nfiindustries.com</value>
+           <desc>Email address for west coast</desc>
+      </cfgparam>
+   </application>
+   <application name="wms_type4_transfers">
+      <cfgparam>
+           <name>fms_server</name>
+           <value>fmsprod.usmc-mccs.org</value>
+           <desc>Genex server</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>archive_d</name>
+           <value>/usr/local/wms/data/archive/transfer_type4</value>
+           <desc>Archive dir</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>RDC_east_coast_site_id</name>
+           <value>60001</value>
+           <desc>East coast warehouse site id</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>RDC_west_coast_site_id</name>
+           <value>70001</value>
+           <desc>West coast warehouse site id</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Retail_HQ_EAST</name>
+           <value>H09-1002-60-5101-000-000</value>
+           <desc>LOA(Line of Accounting) for HQ Retail</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Retail_HQ_WEST</name>
+           <value>H09-1002-70-5101-000-000</value>
+           <desc>LOA(Line of Accounting) for HQ Retail</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Supply_HQ_EAST</name>
+           <value>H09-1002-60-1601-000-RMS</value>
+           <desc>LOA(Line of Accounting) for HQ Supply</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Supply_HQ_WEST</name>
+           <value>H09-1002-70-1601-000-RMS</value>
+           <desc>LOA(Line of Accounting) for HQ Supply</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Retail_CMD</name>
+           <value>cmd-cost_center-cmd_key-5101-000-dept_id</value>
+           <desc>LOA(Line of Accounting) for Command Retail. Need to subst the cmd, cost_center, cmd_key, and dept_id variables.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Banking_HQ</name>
+           <value>H09-0000-01-1119-000-RDC</value>
+           <desc>LOA(Line of Accounting) for HQ RDC Concentration Banking</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Banking_CMD</name>
+           <value>cmd-0000-01-1119-000-000</value>
+           <desc>LOA(Line of Accounting) for Command Concentration Banking. You need to subst the  cmd variable. Do not forget.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_TR_Fund_CMD</name>
+           <value>H02-0000-01-2701-cmd-000</value>
+           <desc>LOA(Line of Accounting) for Command Trust Fund. Need to subst cmd variable.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_TR_Fund_HQ</name>
+           <value>H02-0000-01-2701-H09-000</value>
+           <desc>LOA(Line of Accounting) for HQ Trust Fund</desc>
+      </cfgparam>
+   </application>
+   <application name="wms_email">
+      <cfgparam type="hash">
+         <name>ack_recipient</name>
+         <value key="Tiffany Lam">tiffany.lam@nfiindustries.com</value>
+         <value key="Kelly Thompson">kelly.thompson@nfiindustries.com</value>
+         <value key="659-mcx">659-mcx@nfiindustries.com</value>
+         <value key="RMS Analyst">rms-analyst@usmc-mccs.org</value>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="Darrel LittlePage">Darrel.Littlepage@nfiindustries.com</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>ship_confirm_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS">RMS-Analyst@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="wms_vendor">
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="rdistaff">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS">RMS-Analyst@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="mcl_DATA">
+     <cfgparam>
+       <name>FTP_SERVER</name>
+       <!-- <value>b2b.mclaneco.com</value> -->
+       <!--<value>sftp.gham.mclaneco.com</value> -->
+       <value>198.160.58.103</value> 
+       <desc>FTP connect name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>USER</name>
+       <value>usmcx</value>
+       <desc>FTP user name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>PSWD</name>
+       <value>Lw2w3xpbbWFE</value>
+       <desc>FTP user pswd</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>REMOTE_DIR</name>
+       <value>CMI/</value>
+       <desc>Remote directory where the directory located</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>ARC_DIR</name>
+       <value>/usr/local/mccs/data/mcl/archive</value>
+       <desc>Archive directory for MCL files</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FILE_TO_FTP</name>
+       <value>MCX_MCLANE_YYYYMMDD.csv</value>
+       <desc>File name to sftp</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FILE_TO_PRODUCE</name>
+       <value>MCX_MCLANE_YYYYMMDD.csv</value>
+       <desc>File name to produce</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>NumOfDays</name>
+       <value>4</value>
+       <desc>Number of days to extract from Cognos DB</desc>
+     </cfgparam>
+     <cfgparam type="hash">
+       <name>emails</name>
+       <value key="RMS">rms-analyst@usmc-mccs.org</value>
+       <value key="RDI">rdistaff@usmc-mccs.org</value>
+       <value key="BUS2">davisa@usmc-mccs.org</value>
+       <value key="Mike Thomas">thomasm@usmc-mccs.org</value>
+     </cfgparam>
+     <cfgparam>
+       <name>email_sub</name>
+       <value>McLane DD Daily Sales - Transmission Failed</value>
+     </cfgparam>
+     <cfgparam>
+       <name>rpt_sites</name>
+       <value></value>
+     </cfgparam>
+   </application>
+   <application name="nielsen_ftp_old">
+      <cfgparam type="hash">
+         <name>sftp</name>
+         <value key="user">mec00001</value>
+         <value key="password">mec00001@123</value>
+         <value key="old_host">ftp.acnielsen.com</value>
+         <value key="host">ftp.nielseniq.com</value>
+         <!-- value key="port">24</value --> 
+         <value key="input_dir">INPUT</value>
+      </cfgparam>
+   </application>
+
+   <application name="nielsen_ftp">
+      <cfgparam type="hash">
+         <name>sftp</name>
+         <value key="user">nielsen@marinecorpsexmec.com</value>
+         <value key="password">NiqM-E-C$8365b2022-05-02!</value>
+         <value key="old_host">ftp.acnielsen.com</value>
+         <value key="host">namft.nielseniq.com</value>
+         <!-- value key="port">24</value --> 
+         <value key="input_dir">Nielsen_mec0000</value>
+      </cfgparam>
+   </application>
+   
+<application name="edi_view">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+   </application>
+   <application name="dbms_pipes">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+           <name>log_d</name>
+           <value>/usr/local/wms/log/dbms_pipes/</value>
+           <desc>Logging directory</desc>
+      </cfgparam>
+   </application>
+   <application name="wms_receipts">
+      <cfgparam>
+           <name>log_d</name>
+           <value>/usr/local/wms/log/WMS_Receipts/</value>
+           <desc>Receipts directory</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+       <name>emails</name>
+       <value key="RDI">rdistaff@usmc-mccs.org</value>
+       <value key="RMS">rms-analyst@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="wms_iri">
+      <cfgparam>
+           <name>log_d</name>
+           <value>/usr/local/wms/log/wms_iri_process</value>
+           <desc>IRI Perl Process</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+       <name>emails</name>
+       <value key="RDI">rdistaff@usmc-mccs.org</value>
+       <value key="RMS">rms-analyst@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="WMS_GUI_Report">
+      <cfgparam>
+           <name>orders_heading</name>
+           <value>Orders Reports</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>orders_data_dir</name>
+           <value>/usr/local/wms/data/archive/flatfile/orders</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>invadj_heading</name>
+           <value>Inventory Adjustment Reports</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>invadj_data_dir</name>
+           <value>/usr/local/wms/data/archive/WMS_InvAdj</value>
+           <desc></desc>
+      </cfgparam>
+      <cfgparam>
+           <name>invadj_th</name>
+           <value>Trans/Adj ID|RDC Site|RMS Style|Color|Size|Dim|Reason|Difference</value>
+           <desc>table column heading</desc>
+      </cfgparam>
+   </application>
+   <application name="type3_transfers">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>fms_server</name>
+           <value>fmsprod.usmc-mccs.org</value>
+           <desc>Genex server</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+           <name>archive_d</name>
+           <value>/usr/local/mccs/data/transfer_type3/archive</value>
+           <desc>Archive directory</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>last_run_file</name>
+           <value>/usr/local/mccs/data/transfer_type3/storable/last_run</value>
+           <desc>File that stores the last ran merch period and year</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_TR_Fund_CMD</name>
+           <value>H02-0000-01-2701-cmd-000</value>
+           <desc>LOA(Line of Accounting) for Command Trust Fund.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Banking_CMD</name>
+           <value>cmd-0000-01-1119-000-000</value>
+           <desc>LOA(Line of Accounting) for Command Concentration Banking.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>LOA_Retail_CMD</name>
+           <value>cmd-cost_center-cmd_key-5101-000-dept_id</value>
+           <desc>LOA(Line of Accounting) for Command Retail.</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>bruce_path</name>
+           <value>/usr/local/mccs_fms/data/in/gl/icms</value>
+           <desc>Path where the file created</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>bruce_file</name>
+           <value>rms_tr3_postdate.txt</value>
+           <desc>Filename that Bruce will pick up</desc>
+      </cfgparam>
+   </application>
+   <application name="prch_global">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+   </application>
+   <application name="StorableTable_PM">
+      <cfgparam>
+         <name>DATA_DIR</name>
+         <value>/usr/local/mccs/data/storable/table</value>
+         <desc>This is where all the storable files reside.</desc>
+      </cfgparam>
+   </application>
+   <application name="storable">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="empowerit_v2">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>sftp</name>
+          <value key="user">namcxd32ftp</value>
+         <value key="password">RjodM9xv</value>
+         <value key="host">sftpna.iriworldwide.com</value>
+
+<!--      <value key="user">d32ftp</value>
+         <value key="password">xqVmh3w</value>
+         <value key="host">ftp.infores.com</value> -->
+         <value key="input_dir">Up</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value> 
+      </cfgparam>
+      <cfgparam>
+           <name>sleepTimeSec</name>
+           <value>3600</value>
+           <desc>time in seconds</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>retries</name>
+           <value>5</value>
+           <desc>number of times to check for complete sales</desc>
+      </cfgparam>
+   </application>
+   <application name="not_on_file">
+      <cfgparam>
+         <name>DBNAME</name>
+         <value>rms_p</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DEBUG</name>
+         <value>0</value>
+         <desc>1 for yes, 0 for no</desc>
+      </cfgparam>
+   </application>
+   <application name="rdc_rms_rep">
+      <cfgparam type="hash">
+         <name>email</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>report_email</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS-Analyst">rms-analyst@usmc-mccs.org</value>
+         <value key="Doug Good">goodd@usmc-mccs.org</value>
+         <value key="MCX Logistics">MCXLogistics@usmc-mccs.org</value> 
+      </cfgparam>
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>RMS database dbname</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>data_dir</name>
+         <value>/usr/local/mccs/data/rdc_rms_rep/storable</value>
+         <desc>Storable file location</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>xlsx_dir</name>
+         <value>/usr/local/mccs/data/rdc_rms_rep/xlsx</value>
+         <desc>Storable file location</desc>
+      </cfgparam>
+   </application>
+   <application name="banking_sftp">
+      <cfgparam>
+         <name>SFTPHOST_BOA</name>
+         <value>b2b32.bankofamerica.com</value>
+         <desc>BOA sftp server host. b2b02u.bankofamerica.com is TEST server.</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SFTPUSER_BOA</name>
+         <value>usmcpers</value>
+         <desc>BOA sftp server username</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>SFTPPW_BOA</name>
+         <value>asdf!@#$</value>
+         <desc>BOA sftp server username</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails_tech</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="Jenniger Mcclain">Jennifer.Mcclain@usmc-mccs.org</value>
+	 <value key="Mary Ann Cullen">maryann.cullen@usmc-mccs.org</value>
+	 <value key="Alex Owen">alexander.owens@usmc-mccs.org</value>
+	 <value key="FMS GL Admin">fmsgladmin@usmc-mccs.org</value>
+	 <value key="Sonya Norton">sonya.norton@usmc-mccs.org</value>
+	 <value key="Erin Smith">erin.smith@usmc-mccs.org</value>
+	 <value key="Nancy Arnold">nancy.arnold@usmc-mccs.org</value>
+	 <value key="Allison Lasselle">Allison.Lassalle@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>AP_DATA_DIR</name>
+         <value>/usr/local/mccs/data/banking_sftp/APack</value>
+         <desc>Account Payable local acknowledgement data directory</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>FMS_DBNAME</name>
+         <value>fms_pctc</value>
+         <desc>FMS Database connection dbname</desc>
+      </cfgparam>
+   </application>
+   <application name="getprack_sftp">
+      <cfgparam type="hash">
+         <name>email</name>
+         <value key="DEVELOPER">rdistaff@usmc-mccs.org</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>cust_email</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="Leslie">Leslie.Young@usmc-mccs.org</value>
+         <value key="OMB">PEOPLECONNECTION@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>data_dir</name>
+         <value>/usr/local/mccs/data/banking_sftp/PRack</value>
+         <desc>Excel file location</desc>
+      </cfgparam>
+   </application>
+   <application name="e832_stock_model">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="prch_spot_prices">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_email</name>
+         <value key="rdiusr">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>rms_db</name>
+         <value>rms_p</value>
+         <desc>Database connection</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>dbname</name>
+         <value>ibisora</value>
+         <desc>Database connection</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>user_list_file</name>
+  <value>/usr/local/mccs/www/ibis.usmc-mccs.org/data/priv/apps/price_change/user_list_for_filter.txt</value>
+         <desc>The actual filename that the GUI uses to populate the drop down menu</desc>
+      </cfgparam>
+   </application>
+   <application name="mri_landair_rf">
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>RMS database dbname</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>prv_screen_code</name>
+         <value>e</value>
+         <desc>Code to back up one screen</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>sus_screen_code</name>
+         <value>s</value>
+         <desc>Code to suspend previous entity</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>clo_screen_code</name>
+         <value>c</value>
+         <desc>Code to close primary entity</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>list_screen_code</name>
+         <value>l</value>
+         <desc>Code to list objects in primary entity</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>list_page_size</name>
+         <value>7</value>
+         <desc>Number of rows per page to display on List page</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>trn_screen_code</name>
+         <value>t</value>
+         <desc>Code to place pallet in Transit status</desc>
+      </cfgparam>
+   </application>
+   <application name="landair_report">
+      <cfgparam>
+         <name>DBNAME</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2S</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+         <value key="RDI group">rdistaff@usmc-mccs.org</value>
+         <value key="Gwen Hill-Briones">hill-brionesg@usmc-mccs.org</value>
+         <value key="Ashley Robey">Ashley.Robey@usmc-mccs.org</value>
+         <value key="Larry Lewis">larry.d.lewis@usmc-mccs.org</value>
+         <value key="Mike Gonzalez">Michael.Gonzalez@usmc-mccs.org</value>
+         <value key="Garry Brown">gbrown@landair.com</value>
+         <value key="Douglas Good">Douglas.Good@usmc-mccs.org</value>
+         <value key="Yulonda Roy">Yulonda.Roy@usmc-mccs.org</value>
+         <value key="Andrea Scott">Andrea.Scott@usmc-mccs.org</value>
+         <value key="Samantha Newton">Samantha.Newton@usmc-mccs.org</value>
+         <value key="Charles Dillistone">Charles.Dillistone@usmc-mccs.org</value>
+         <value key="Curtis Thomas">cthomas@landair.com</value>
+         <value key="Lyndal Harper">lharper@landair.com</value>
+         <value key="Krystal Faison">kfaison@landair.com</value>
+         <value key="Tashanna Boney">tboney@landair.com</value>
+         <value key="Natoya Lamb">nlamb@landair.com</value>
+         <value key="Warsaw RDC">warsawrdc@landair.com</value>
+         <value key="Traci Dale">Traci.Dale@usmc-mccs.org</value>
+         <value key="Jacquelyn McKinn">jmckinn@usmc-mccs.org</value>
+         <value key="Alexander Rivas">arivas@usmc-mccs.org</value>
+         <value key="Mayra Lozano">mlozano@usmc-mccs.org</value>
+         <value key="Jose Hernandez Jr">jhernandez@usmc-mccs.org</value>
+         <value key="Lyndal Harper">lharper@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+   </application>
+   <application name="sps_dla_global">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+     <cfgparam type="hash">
+         <name>sftp_config</name>
+         <value key="user">mcx</value>
+         <value key="password">U2FsdGVkX18CwtERL5t184zbufX/cet73OohOJagnpc=</value>
+         <value key="input_dir">in</value>
+         <value key="host">sftp.spscommerce.com</value>
+         <value key="port">10022</value>
+      </cfgparam>
+     <cfgparam type="hash">
+         <name>HeaderAddress</name>
+         <value key="AddressTypeCode">OB</value>
+         <value key="LocationCodeQualifier">10</value>
+         <value key="AddressLocationNumber">M34205</value>
+         <value key="AddressName">MCX HEADQUATERS</value>
+         <value key="Address1">3044 Catlin Ave.</value>
+         <value key="Address2"></value>
+         <value key="City">Quantico</value>
+         <value key="State">VA</value>
+         <value key="PostalCode">22134</value>
+         <value key="Country">USA</value>
+      </cfgparam>
+     <cfgparam type="hash">
+         <name>BillToAddress</name>
+         <value key="AddressTypeCode">BT</value>
+         <value key="LocationCodeQualifier">10</value>
+         <value key="AddressLocationNumber">M34205</value>
+         <value key="AddressName">DFAS Cleveland</value>
+         <value key="Address1">1240 East Ninth Street</value>
+         <value key="Address2"></value>
+         <value key="City">Cleveland</value>
+         <value key="State">OH</value>
+         <value key="PostalCode">44199</value>
+         <value key="Country">USA</value>
+      </cfgparam>
+     <cfgparam type="hash">
+         <name>Z4</name>
+         <value key="AddressTypeCode">Z4</value>
+         <value key="LocationCodeQualifier">M4</value>
+         <value key="AddressLocationNumber">SMS</value>
+         <value key="AddressName">Defense Supply Ctr Philadelphia</value>
+         <value key="AddressAlternateName2">TO</value>
+         <value key="Address1">700 Robbins Ave</value>
+         <value key="Address2"></value>
+         <value key="City">PHILADELPHIA</value>
+         <value key="State">PA</value>
+         <value key="PostalCode">19111</value>
+         <value key="Country">USA</value>
+      </cfgparam>
+     <cfgparam type="hash">
+         <name>emails</name>
+         <value key="rdiusr">rdistaff@usmc-mccs.org</value> 
+         <value key="rms-analyst">rms-analyst@usmc-mccs.org</value> 
+         <value key="John Lindquist">Jonathan.Lindquist@usmc-mccs.org</value> 
+         <value key="Jennifer Stafford">staffordj@usmc-mccs.org</value> 
+     </cfgparam>
+   </application>
+   <application name="landair_cron_report">
+      <cfgparam>
+         <name>DBNAME</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2S</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>pallet_days</name>
+         <value>20</value>
+         <desc>How many days to capture</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails_60001</name>
+         <value key="Curtis Thomas">cthomas@landair.com</value> 
+         <value key="Lyndal Harper">lharper@landair.com</value>
+         <value key="Krystal Faison">kfaison@landair.com</value>
+         <value key="Natoya Lamb">nlamb@landair.com</value>
+         <value key="Matt Platt">mplatt@landair.com</value>
+         <value key="Tashanna Boney">tboney@landair.com</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails_70001</name>
+         <value key="Jacquelyn McKinn">jmckinn@landair.com</value>
+         <value key="Alexander Rivas">arivas@landair.com</value>
+         <value key="Mayra Lozano">mlozano@landair.com</value>
+         <value key="Jose Hernandez Jr">jhernandez@landair.com</value>
+         <value key="Lyndal Harper">lharper@landair.com</value> 
+         <value key="Matt Platt">mplatt@landair.com</value>
+         <value key="M Rowles">mrowles@landair.com</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+   </application>
+   <application name="landair_pallet_content_audit_rpt">
+      <cfgparam>
+         <name>DBNAME</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2S</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+         <value key="RDI group">rdistaff@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam>
+        <name>PALLET_STAGING_DIR</name>
+        <value>/usr/local/mccs/data/wms/pallet_info/flat_staging/</value>
+        <desc>dirctory for temp storage of report files</desc>
+      </cfgparam>
+      <cfgparam>
+        <name>PALLET_ARCHIVE_DIR</name>
+        <value>/usr/local/mccs/data/wms/pallet_info/flat_archive/</value>
+        <desc>dirctory for archiving of report files</desc>
+      </cfgparam>
+      <cfgparam>
+        <name>IMG_UPC</name>
+        <value>/usr/local/mccs/data/wms/pallet_info/img_upc/</value>
+        <desc>dirctory for UPC image files</desc>
+      </cfgparam>
+   </application>
+   <application name="edi_normalize">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam >
+         <name>e856_dir_path</name>
+         <value>/usr/local/mccs/data/normalization/e856/</value>
+      </cfgparam>
+      <cfgparam >
+         <name>e856_log_path</name>
+         <value>/usr/local/mccs/log/normalization/e856/</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="rdiusr">rdistaff@usmc-mccs.org</value> 
+         <value key="nora">nora.jansen@usmc-mccs.org</value> 
+         <value key="ashley">ashley.robey@usmc-mccs.org</value> 
+         <value key="kaveh">kaveh.sari@usmc-mccs.org</value>        
+      </cfgparam>
+   </application>
+   <application name="pre_reclass">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam >
+         <name>log_path</name>
+         <value>/usr/local/mccs/log/</value>
+      </cfgparam>
+      <cfgparam>
+         <name>IBIS_MERCH_DIR</name>
+         <value>/usr/local/mccs/data/sas/pre_reclass/</value>
+      </cfgparam>
+      <cfgparam>
+         <name>SAS_SERVER</name>
+         <value>draix13.usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam >
+         <name>SAS_USER</name>
+         <value>sasmdi</value>
+      </cfgparam>
+      <cfgparam>
+         <name>SAS_SERVER_PSWD</name>
+         <value>MCCS-sas</value>
+      </cfgparam>
+      <cfgparam>
+         <name>SAS_SERVER_IP</name>
+         <value>10.151.10.226</value>
+      </cfgparam>
+      <cfgparam>
+         <name>SAS_MERCH_DIR</name>
+         <value>/app/mdi/mccs/</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="rdiusr">rdistaff@usmc-mccs.org</value>
+         <value key="usr">Melissa.Newton@usmc-mccs.org</value>
+         <value key="usr1">Isa.Lopez@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="nexcom">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam >
+         <name>file_path</name>
+         <value>/usr/local/wms/data/nexcom/bol/</value>
+      </cfgparam>
+      <cfgparam >
+         <name>log_path</name>
+         <value>/usr/local/wms/log/nexcom/bol/</value>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="WMS_INV_BARCODES">
+      <cfgparam>
+         <name>db_name</name>
+         <value>rms_p</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="rsg1">Mike.Thomas@usmc-mccs.org</value>
+         <value key="rsg2">Reggett.Lawrence@usmc-mccs.org</value>
+         <value key="rsg3">Sean.M.Kennedy@usmc-mccs.org</value>
+         <value key="msst">rms-analyst@usmc-mccs.org</value>
+         <value key="rdi1">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="pom_defaults_audit">
+      <cfgparam>
+         <name>db_name</name>
+         <value>rms_p</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+          <value key="msst">rms-analyst@usmc-mccs.org</value>
+          <value key="log">glaesercj@usmc-mccs.org</value>
+      </cfgparam>
+</application>
+<application name="WMS_SKP_RECEIPTS">
+   <cfgparam>
+       <name>db_name</name>
+       <value>rms_p</value>
+       <desc>database to use</desc>
+   </cfgparam>
+   <cfgparam type="hash">
+         <name>emails</name>
+            <value key="rdiusr">rdistaff@usmc-mccs.org</value>
+            <value key="rms-analyst">rms-analyst@usmc-mccs.org</value>
+            <value key="karen">stuekerjuergenk@usmc-mccs.org</value>
+   </cfgparam>
+   <cfgparam>
+       <name>arc_age_mins</name>
+       <value>120</value>
+       <desc>age in archive</desc>
+   </cfgparam>
+</application>
+   <application name="ibis_gl">
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2p</desc>
+      </cfgparam>
+   </application>
+   <application name="rejected_sales">
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2p</desc>
+      </cfgparam>
+   </application>
+   <application name="wms_missing_item">
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2p</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS-Analyst">rms-analyst@usmc-mccs.org</value>
+         <value key="DougGood">Douglas.Good@usmc-mccs.org</value>
+         <value key="MCXLogistics">MCXLogistics@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+   </application>
+   <application name="inv_adj_alert">
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>Connect to MC2p</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="Doug Good">Douglas.Good@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="Hanny Januarius">januariush@usmc-mccs.org</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+   </application>
+   <application name="mri_rima_rf">
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>RMS database dbname</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>prv_screen_code</name>
+         <value>b</value>
+         <desc>Code to back up one screen</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>stock_screen_code</name>
+         <value>s</value>
+         <desc>Code to record stock action</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>research_screen_code</name>
+         <value>r</value>
+         <desc>Code to record research action</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>no_action_screen_code</name>
+         <value>n</value>
+         <desc>Code to record no action</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>list_screen_code</name>
+         <value>l</value>
+         <desc>Code to list objects in primary entity</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>pogs_screen_code</name>
+         <value>p</value>
+         <desc>Code to list multiple pogs for current barcode</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>qoh_screen_code</name>
+         <value>q</value>
+         <desc>Code to list qoh list for current barcode</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>shopping_list_screen_code</name>
+         <value>s</value>
+         <desc>Code to show shopping list</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>list_page_size</name>
+         <value>2</value>
+         <desc>Number of rows per page to display on List page</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>qoh_page_size</name>
+         <value>4</value>
+         <desc>Number of rows per page to display on QOH List page</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>data_dir</name>
+         <value>/usr/local/mccs/data/rima</value>
+         <desc>Directory containing xlsx files with session data</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>rpt_msgs</name>
+         <value key="999">No action required</value>
+         <value key="1">Pull from Back Stock</value>
+         <value key="2">Inventory Control Research</value>
+         <value key="3">Inventory - POG Research</value>
+         <value key="4">Inventory - NOF</value>
+         <value key="5">No History at location</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>email</name>
+         <value key="Recipient_1">rdistaff@usmc-mccs.org</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+   </application>
+   <application name="SMS_message">
+      <cfgparam type="hash">
+         <name>recipient</name>
+         <value key="Hanny Januarius">7036295484@vtext.com</value>
+         <value key="Armando Someillan">9542703660@vtext.com</value>
+         <value key="Larry Lewis">5406563348@mms.att.com</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+   </application>
+   <application name="consignment">
+      <cfgparam type="hash">
+         <name>email</name>
+         <value key="Hanny Januarius">januariush@usmc-mccs.org</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>dbname_reporting</name>
+         <value>rms_r</value>
+         <desc>Connect to RMS database</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>dbname</name>
+         <value>rms_p</value>
+         <desc>Connect to RMS database</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>database_link</name>
+         <value>mc2p</value>
+         <desc>Connect to RMS database</desc>
+      </cfgparam>
+   </application>
+<application name="mcl_DATA_test">
+     <cfgparam>
+       <name>FTP_SERVER</name>
+       <value>b2btest.mclaneco.com</value>
+       <desc>FTP connect name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>USER</name>
+       <value>usmct</value>
+       <desc>FTP user name </desc>
+     </cfgparam>
+     <cfgparam>
+       <name>PSWD</name>
+       <value>ghbSJbvien5z</value>
+       <desc>FTP user pswd</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>REMOTE_DIR</name>
+       <value>CMI/</value>
+       <desc>Remote directory where the directory located</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>ARC_DIR</name>
+       <value>/usr/local/mccs/data/mcl/test/archive</value>
+       <desc>Archive directory for MCL files</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FILE_TO_FTP</name>
+       <value>MCX_MCLANE_YYYYMMDD.csv</value>
+       <desc>File name to sftp</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>FILE_TO_PRODUCE</name>
+       <value>MCX_MCLANE_YYYYMMDD.csv</value>
+       <desc>File name to produce</desc>
+     </cfgparam>
+     <cfgparam>
+       <name>NumOfDays</name>
+       <value>1</value>
+       <desc>Number of days to extract from Cognos DB</desc>
+     </cfgparam>
+     <cfgparam type="hash">
+       <name>emails</name>
+       <value key="RDI">rdistaff@usmc-mccs.org</value>
+     </cfgparam>
+     <cfgparam>
+       <name>email_sub</name>
+       <value>McLane DD Daily Sales TEST- Transmission Failed</value>
+     </cfgparam>
+     <cfgparam>
+       <name>rpt_sites</name>
+	 <value></value>
+     </cfgparam>
+   </application>  
+   <application name="aafes_pgp">
+      <cfgparam><name>Armour</name><value>1</value><desc></desc></cfgparam>
+      <cfgparam><name>Compat</name><value>PGP5</value><desc></desc></cfgparam>
+      <cfgparam><name>PubRing</name><value>/usr/local/mccs/etc/keyring/pubring.gpg</value><desc></desc></cfgparam>
+      <cfgparam><name>SecRing</name><value>/usr/local/mccs/etc/keyring/secring.gpg</value><desc></desc></cfgparam>
+      <cfgparam><name>Recipients</name><value>2CACEA8F</value><desc></desc></cfgparam>
+      <cfgparam><name>SignKeyID</name><value>F94C9CBD</value><desc></desc></cfgparam>
+      <cfgparam><name>SignPassphrase</name><value>SemperFi</value><desc></desc></cfgparam>
+   </application>
+   <application name="rms_site_section_maintenance">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+   </application>
+   <application name="fms_xfb">
+      <cfgparam type="hash">
+         <name>programmer_emails</name>
+         <value key="RDI STAFF">rdistaff@usmc-mccs.org</value>
+      </cfgparam>
+      <cfgparam>
+         <name>ARCHIVE_D</name>
+         <value>/usr/local/mccs/data/xfb/archive</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DOWNLOAD_D</name>
+         <value>/usr/local/mccs/data/xfb/download</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>TMP_FILE_D</name>
+         <value>/usr/local/mccs/data/xfb/tmp_remote</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEX_OUT_D</name>
+         <value>/usr/local/mccs/data/xfb/xfb_gend</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEX_PREFIX</name>
+         <value>FHGEN</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>PROD_SITES</name>
+         <desc>fmsprod:/home/rdiusr/hsistage and fposusr cron will pick them up</desc>
+<!--
+         <value>CLM_0005</value>
+         <value>CLM</value>
+         <value>SSC</value>
+         <value>BUM</value>
+         <value>KBM</value>
+         <value>QUM</value>
+         <value>GCM</value>
+         <value>ALM</value>
+         <value>SCM</value>
+         <value>YUM</value>
+         <value>CPM</value>
+         <value>TWM</value>
+         <value>PNM</value>
+         <value>MRM</value>
+         <value>SDM</value>
+-->
+         <value>IWM</value>
+      </cfgparam>
+      <cfgparam>
+         <name>WINDOWSREMOTEHOST</name>
+         <value>ftp.usmc-mccs.org</value>
+         <desc>Windows host where HSI process get the source files NEW</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>HOSTNAMEDEV</name>
+         <value>fmsdev</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>HOSTNAMEPROD</name>
+         <value>fmsprod</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>FMSUSERNAME</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>USERNAME</name>
+         <value>foodinventory</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>USERNAME_org</name>
+         <value>rdiusr</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PA</name>
+         <value>MCC5f00d!</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>DATADIR</name>
+         <value>/home/foodinventory/PROD/MyMicros/COMPUTRON</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>GENEXPROC</name>
+         <value>/usr/local/mccs/bin/xfb_genex.pl</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>RFL</name>
+         <value>/export/home/rdiusr/xfbstage</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PRFL</name>
+         <value>/export/home/rdiusr/xfbstage</value>
+         <desc></desc>
+      </cfgparam>
+      <cfgparam>
+         <name>PDIR</name>
+         <value>/home/rdiusr/hsi_proc</value>
+         <desc></desc>
+      </cfgparam>
+   </application>
+   <application name="inv_adj_ibis">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam type="array">
+         <name>SUPER_USERS</name>
+         <value>lewisld</value>
+         <value>asomeillan</value>
+         <value>jansenn</value>
+         <value>Ashley.Robey</value>
+         <value>kennedyse</value>
+         <value>smithra</value>
+         <value>orndorffk</value>
+         <value>smithkr</value>
+         <value>thomasm</value>
+         <value>hjanuarius</value>
+         <value></value>
+         <desc>This is the ibis login userid </desc>
+      </cfgparam>
+     <cfgparam type="array">
+         <name>DEBUG_USERS</name>
+         <!--<value>lewisld</value>-->
+         <value>whatever</value>
+         <value></value>
+         <desc>This is the ibis login userid </desc>
+      </cfgparam>
+   </application>
+   <application name="of_rpos_dwitem">
+      <cfgparam type="hash">
+         <name>email</name>
+         <value key="Recipient_1">rdistaff@usmc-mccs.org</value>
+         <desc>Developer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>cust_email</name>
+         <value key="Customer1">rdistaff@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>base_dir</name>
+         <value>/usr/local/mccs/scratch/yuc_temp/dwitem_parser/</value>
+         <desc>base directory for the process</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>data_dir</name>
+         <value>/usr/local/mccs/data/of_rpos_sales/</value>
+         <desc>data</desc>
+      </cfgparam>
+      <cfgparam>
+         <name>loader_config_file</name>
+         <value>/usr/local/mccs/scratch/yuc_temp/dwitem_parser/bin/rpos_dwitem_daily.cfg</value>
+         <desc>loader configuration file location</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>DBNAME</name>
+        <value>rms_r</value>
+        <desc>database for uploading the data</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>file_pattern</name>
+        <value>DWITEM</value>
+        <desc>database for uploading the data</desc>
+      </cfgparam>
+    <cfgparam>
+        <name>delimiter</name>
+        <value>|</value>
+        <desc> delimiter in dwitem file</desc>
+      </cfgparam>
+    <cfgparam>
+        <name>date_format</name>
+        <value>MM/DD/YY</value>
+        <desc></desc>
+    </cfgparam>
+    <cfgparam>
+        <name>tas_dir</name>
+        <value>/TAS_BASE/data</value>
+        <desc></desc>
+    </cfgparam>
+   </application>
+   <application name="misc_query">
+     <cfgparam>
+        <name>dbname</name>
+        <value>rms_p</value>
+        <desc>database </desc>
+      </cfgparam>
+   </application>
+  <application name="nexcom_upc_load">
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="Hanny">januariush@usmc-mccs.org</value>
+         <desc>Tech email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+         <value key="Cust1">januariush@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>SftpHost</name>
+        <value></value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>SftpUser</name>
+        <value></value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>pw</name>
+        <value></value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>SftpDir</name>
+        <value></value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>dbname</name>
+        <value>rms_p</value>
+        <desc>database </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>base_dir</name>
+        <value>/usr/local/mccs/data/nexcom_upc_load</value>
+        <desc>root dir for this application</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>download_dir</name>
+        <value>download</value>
+        <desc>app root dir + download directory</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>archive_dir</name>
+        <value>archive</value>
+        <desc>app root dir + archive directory</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>storable_dir</name>
+        <value>storable</value>
+        <desc>app root dir + storable directory</desc>
+      </cfgparam>
+   </application>
+   <application name="oracle_fusion_posting">
+     <cfgparam>
+        <name>rms_dbname</name>
+        <value>rms_p</value>
+        <desc>RMS database </desc>
+     </cfgparam>
+     <cfgparam>
+        <name>ibis_dbname</name>
+        <value>ibisora</value>
+        <desc>Ibis ora database </desc>
+     </cfgparam>
+     <cfgparam>
+        <name>fusion_dbname</name>
+        <value>orafus_073a</value>
+        <desc>Fusion database </desc>
+     </cfgparam>
+   </application>
+   <application name="MCLANE_COST">
+   <cfgparam type="hash">
+        <name>tech_emails</name>
+         <value key="yuc">rdistaff@usmc-mccs.org</value>
+         <value key="RMS">RMS-Analyst@usmc-mccs.org</value>
+         <value key="reggie">Reggett.Lawrence@usmc-mccs.org</value>        
+         <desc>Tech email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+        <value key="reggie">Reggett.Lawrence@usmc-mccs.org</value> 
+        <value key="customer_email">rdistaff@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>db_name</name>
+        <value>rms_p</value>
+        <desc>database </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>remote_dir</name>
+        <value>/CMI/COSTUPD/</value>
+        <desc> </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>to_dir</name>
+        <value>/usr/local/mccs/data/mclane_cost/staging/</value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>pre_staging_dir</name>
+        <value>/usr/local/mccs/data/mclane_cost/pre_staging/</value>
+        <desc>a tmp holding place for fetched mclane files </desc>
+      </cfgparam>
+    <cfgparam>
+        <name>rpt_dir</name>
+        <value>/usr/local/mccs/data/mclane_cost/reporting/</value>
+        <desc> dir path for storing rejected reports </desc>
+    </cfgparam>
+   <cfgparam>
+        <name>rpt_stage</name>
+        <value>/usr/local/mccs/data/mclane_cost/rpt_stage/</value>
+        <desc> stage directory for reporting </desc>
+      </cfgparam>
+    <cfgparam>
+        <name>staging_dir</name>
+        <value>/usr/local/mccs/data/mclane_cost/staging/</value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>data_dir</name>
+        <value>/usr/local/mccs/data/mclane_cost/staging/</value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>archive_dir</name>
+        <value>/usr/local/mccs/data/mclane_cost/archive/</value>
+        <desc></desc>
+      </cfgparam>
+      <cfgparam>
+        <name>config_file</name>
+        <value>/usr/local/mccs/etc/mclane_cost/mclane_cost.cfg</value>
+        <desc> </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>file_pattern</name>
+        <value>MCX_COST</value>
+        <desc></desc>
+      </cfgparam>
+     <cfgparam>
+        <name>log_dir</name>
+        <value>/usr/local/mccs/log/mclane_cost_load/</value>
+        <desc> </desc>
+      </cfgparam>
+    <cfgparam>
+        <name>reject_config</name>
+        <value>/usr/local/mccs/etc/mclane_cost/mclane_reject_load.config</value>
+        <desc>reject config file for rpt2db package</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>success_config</name>
+        <value>/usr/local/mccs/etc/mclane_cost/mclane_success_load.config</value>
+        <desc>success config file for rpt2db package</desc>
+      </cfgparam>
+      <cfgparam>
+        <name>reject_file_pattern</name>
+        <value>Summary_reject_report</value>
+        <desc> </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>success_file_pattern</name>
+        <value>sum_success_report</value>
+        <desc> </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>reject_report_table</name>
+        <value>mclane_rejected_upc_daily</value>
+        <desc> </desc>
+      </cfgparam>
+     <cfgparam>
+        <name>success_report_table</name>
+        <value>mclane_success_upc_daily</value>
+        <desc> </desc>
+      </cfgparam>
+   </application>
+   <application name="DECA">
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS">RMS-Analyst@usmc-mccs.org</value>        
+         <value key="BUYER1">Pia.Williams@usmc-mccs.org</value>
+         <value key="BUYER2">yuching.chang@usmc-mccs.org</value>
+         <desc>Tech email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_emails</name>
+         <value key="customer_email">rdistaff@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>db_name</name>
+        <value>rms_p</value>
+        <desc>database </desc>
+      </cfgparam>
+      <cfgparam>
+        <name>config_file</name>
+        <value>/usr/local/mccs/data/deca/deca.config</value>
+        <desc> remote host file directory</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>file_pattern</name>
+        <value>BWMCX</value>
+        <desc> remote host file directory</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>to_dir</name>
+        <value>/export/home/rdiusr/tmp2/</value>
+        <desc> remote host file directory</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>FTP_SERVER</name>
+        <!-- <value>65.125.15.249</value> -->
+        <value>ebssftp.commissaries.com</value>
+        <desc> sftp remote host IP</desc>
+      </cfgparam>
+      <cfgparam>
+        <name>USER</name>
+        <value>mcx</value>
+        <desc> sftp remote username</desc>
+      </cfgparam>
+      <cfgparam>
+        <name>PSWD</name>
+        <value>P@$$m1c2x3word!!</value>
+        <desc> sftp remote psw</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>remote_dir</name>
+        <value>/home/MCX/</value>
+        <desc> sftp remote directory</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>log_dir</name>
+        <value>/usr/local/mccs/log/deca/</value>
+        <desc> </desc>
+      </cfgparam>
+       <cfgparam>
+        <name>stage_dir</name>
+        <value>/usr/local/mccs/data/deca/stage/</value>
+        <desc> </desc>
+      </cfgparam>
+       <cfgparam>
+        <name>archive_dir</name>
+        <value>/usr/local/mccs/data/deca/archive/</value>
+        <desc> </desc>
+      </cfgparam>
+     </application>
+   <application name="zebra">
+       <cfgparam>
+        <name>dbname</name>
+        <value>rms_p</value>
+        <desc> </desc>
+      </cfgparam>
+       <cfgparam>
+        <name>midfile_trigger_dir</name>
+        <value>/usr/local/mccs/data/physical_inventory_zebra/midfile_daemon_trigger</value>
+        <desc> </desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <desc>RDI Email</desc>
+      </cfgparam>
+     </application>
+   <application name="sftp_put_daemon">
+      <cfgparam type="hash">
+         <name>sftp_host</name>
+         <value key="zebra">secure.zebrainventory.com</value>
+         <desc>Target server</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <desc>Customer Email</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>username</name>
+         <value key="zebra">st414199</value>
+         <desc>login id</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>salt</name>
+         <value key="zebra">pFTC#4V,</value>
+         <desc>this is the code word to get in</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>target_dir</name>
+         <value key="zebra">/toZRS</value>
+         <desc>Location where we put the file</desc>
+      </cfgparam>
+   </application>
+   <application name="schedules_with_no_parameters_report">
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="HD">hq.help@usmc-mccs.org</value>
+         <value key="RMS Analyst">RMS-Analyst@usmc-mccs.org</value>
+         <value key="Mike Thomas">michael.thomas@usmc-mccs.org</value>
+         <value key="Colin Moreau">colin.moreau@usmc-mccs.org</value>
+         <value key="Melissa Newton">melissa.newton@usmc-mccs.org</value>
+         <value key="Terra Lewis">terra.lewis@usmc-mccs.org</value>
+         <value key="Hanna Grimes">hanna.grimes@usmc-mccs.org</value>
+         <value key="Mallory Parker">mallory.parker@usmc-mccs.org</value>
+         <value key="Cathleen Paxton">cathleen.paxton@usmc-mccs.org</value>
+         <value key="Audrey Herring">audrey.herring@usmc-mccs.org</value>
+         <value key="Sarah Murphy">sarah.murphy@usmc-mccs.org</value>
+         <desc>Report recipient Email</desc>
+      </cfgparam>
+     <cfgparam>
+        <name>dbname</name>
+        <value>rms_p</value>
+        <desc>database </desc>
+      </cfgparam>
+   </application>
+   <application name="poupl_global">
+      <cfgparam>
+           <name>DBNAME</name>
+           <value>rms_s</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+   </application>
+   <application name="DISA">
+      <cfgparam>
+           <name>dbname</name>
+           <value>rms_p</value>
+           <desc>Database name we query against</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>emails</name>
+         <value key="RDI">rdistaff@usmc-mccs.org</value>
+         <value key="RMS Analyst">RMS-Analyst@usmc-mccs.org</value>
+      </cfgparam>
+   </application>
+   <application name="Altria">
+      <cfgparam type="hash">
+         <name>tech_emails</name>
+         <value key="kaveh">kaveh.sari@usmc-mccs.org</value>
+         <value key="James">James.Agneta@usmc-mccs.org</value>
+         <value key="Mike">Michael.Thomas@usmc-mccs.org</value>
+         <value key="Larry">larry.lewis@usmc-mccs.org</value>
+         <!--<value key="rdi">rdistaff@usmc-mccs.org</value>-->
+         <desc>Put developers email here</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>RMS</name>
+           <value>rms_r</value>
+           <desc>IBIS::draix01.usmc-mccs.org</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>MC2Q</name>
+           <value>rms_p</value>
+           <desc>IBIS::draix03.usmc-mccs.org</desc>
+      </cfgparam>
+      <cfgparam type="hash">
+         <name>customer_email</name>
+         <value key="kaveh">kaveh.sari@usmc-mccs.org</value>
+         <value key="Larry">larry.lewis@usmc-mccs.org</value>
+         <desc>Seperate customer emails</desc>
+      </cfgparam>
+      <cfgparam>
+           <name>sftpserver</name>
+           <value>hqlin055.usmc-mccs.org</value>
+      </cfgparam>
+   <!--   <cfgparam>
+           <name>user</name>
+           <value>rdiusr</value>
+      </cfgparam>
+      <cfgparam>
+           <name>pw</name>
+           <value>2UC9ze</value>
+      </cfgparam> -->
+      <cfgparam>
+           <name>sftp_dir</name>
+           <value>/usr/local/mccs/data/incoming/altria</value>
+      </cfgparam>
+   </application>
+
+</config>
