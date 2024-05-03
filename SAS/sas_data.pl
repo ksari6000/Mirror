@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 # SAS Planning and Assortment data
+
 use strict;
 use MCCS::SAS::Util; 
 use IBIS::DBI;
