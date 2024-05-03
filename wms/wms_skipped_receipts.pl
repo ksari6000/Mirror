@@ -164,6 +164,7 @@ left join merch.iri_wms_receipts iriw on iriw.business_unit_id = '30' and iriw.r
 where qarc.export_type = 'RECEIPT' and ((sysdate-qarc.date_finished) * 1440) >= ? 
 and  to_char(Qarc.Date_Inserted,'yyyy') >=  to_char(add_months(trunc(sysdate), -12*2), 'yyyy')
 and r.receipt_id is null and iriw.receipt_id is null and is_number(rarc.po_number) = 'Y'";
+  
     
     my $sth = $dbh->prepare($sql);
     
