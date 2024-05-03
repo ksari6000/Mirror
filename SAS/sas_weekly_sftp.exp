@@ -1,0 +1,35 @@
+#!/usr/bin/expect
+
+#spawn /usr/bin/sftp -o "BatchMode no" -b /usr/local/mccs/data/sas/04_BatchScripts/sas_weekly_expect.txt sasmdi@draix13 
+#expect "sasmdi@draix13's password:"
+#send "MCCS-sas\n"
+
+
+#interact
+#expect eof
+
+set timeout -1
+
+spawn /usr/bin/sftp sasmdi@draix13 
+expect "sasmdi@draix13's password:"
+send "MCCS-sas\n"
+expect "sftp>"
+send "cd /app/mdi/mccs\n"
+expect "sftp>"
+send "progress\n"
+expect "sftp>"
+send "mput /usr/local/mccs/data/sas/MERCH*\n"
+expect "sftp>"
+send "mput /usr/local/mccs/data/sas/MON*\n"
+expect "sftp>"
+send "mput /usr/local/mccs/data/sas/MFINC*\n"
+expect "sftp>"
+send "mput /usr/local/mccs/data/sas/MINV*\n"
+expect "sftp>"
+send "mput /usr/local/mccs/data/sas/DATA*\n"
+expect "sftp>"
+send "exit\n"
+
+expect eof
+
+
